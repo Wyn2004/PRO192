@@ -22,6 +22,6 @@ public class app {
 		System.out.println("Multiply: "+multiFraction.toStringFraction());
 		
 		myFraction divFraction = f1.divTwoFraction(f2);
-		System.out.println("Division: "+divFraction.toStringFraction());
+		System.out.println("Divide: "+divFraction.toStringFraction());
 	}
 }
