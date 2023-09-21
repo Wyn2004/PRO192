@@ -14,6 +14,6 @@ public class app {
 		System.out.println(p3.outPut());
 
 		System.out.println("Distance form p1->p2: " + p1.distance(p2));
-		System.out.println("Area of triangle: " + p3.findTriAngle(p1, p2, p3));
+		System.out.println("Area of triangle: " + p1.findTriAngle(p2, p3));
 	}
 }

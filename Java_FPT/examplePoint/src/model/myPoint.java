@@ -45,10 +45,10 @@ public class myPoint {
 	}
 
 	// Find area triangle
-	public double findTriAngle(myPoint p1, myPoint p2, myPoint p3) {
-		double d1 = p1.distance(p2);
+	public double findTriAngle(myPoint p2, myPoint p3) {
+		double d1 = this.distance(p2);
 		double d2 = p2.distance(p3);
-		double d3 = p3.distance(p1);
+		double d3 = p3.distance(this);
 		double p = (d1 + d2 + d3) / 2;
 		double s = Math.sqrt(p * (p - d1) * (p - d2) * (p - d3));
 		return (double) (Math.round(s * 100)) / 100;

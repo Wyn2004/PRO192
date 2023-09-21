@@ -67,8 +67,15 @@ public class complexNumber {
 	public complexNumber div(complexNumber c2) {
 		complexNumber divNumber = new complexNumber();
 		double deno = Math.pow(c2.real, 2) + Math.pow(c2.image, 2);
-		divNumber.real = (double) Math.round(((this.real * c2.real + this.image * c2.image) / deno) * 100) / 100;
-		divNumber.image = (double) Math.round(((this.image * c2.real - this.real * c2.image) / deno) * 100) / 100;
-		return divNumber;
+		try {
+			if (deno != 0) {
+				divNumber.real = (double) Math.round(((this.real * c2.real + this.image * c2.image) / deno) * 100) / 100;
+				divNumber.image = (double) Math.round(((this.image * c2.real - this.real * c2.image) / deno) * 100) / 100;
+				return divNumber;
+			} else throw new Exception("Invalid...");
+		} catch (Exception e) {
+			System.out.println("Error: "+e.getMessage());
+			return null;
+		}
 	}
 }
