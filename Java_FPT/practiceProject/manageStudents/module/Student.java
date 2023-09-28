@@ -1,5 +1,6 @@
 package module;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Student extends Person {
@@ -9,6 +10,14 @@ public class Student extends Person {
 	private String email;
 
 	public Student() {
+	}
+	
+	public Student(String ID)	{
+		this.ID = ID;
+	}
+	
+	public Student(String name)	{
+		super(name);
 	}
 
 	public Student(String name, String gender, Day birthDay, String adress, String ID, double average, String email) {
@@ -26,15 +35,12 @@ public class Student extends Person {
 		Scanner inputStudent = new Scanner(System.in);
 
 		System.out.print("Enter student ID (8 character): ");
-		while (!setID(inputStudent.nextLine()))
-			;
+		while (!setID(inputStudent.nextLine()));
 		System.out.print("Enter average point: ");
-		while (!setAverage(inputStudent.nextDouble()))
-			;
+		while (!setAverage(inputStudent.nextDouble()));
 		inputStudent.nextLine();
 		System.out.print("Enter email: ");
-		while (!setEmail(inputStudent.nextLine()))
-			;
+		while (!setEmail(inputStudent.nextLine()));
 
 	}
 
@@ -93,9 +99,28 @@ public class Student extends Person {
 		else
 			return false;
 	}
-	
+
 	public String toStringStudent() {
 		return " Student: [ID=" + ID + ", average=" + average + ", email=" + email + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ID, average, email);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return Objects.equals(ID, other.ID)
+				&& Double.doubleToLongBits(average) == Double.doubleToLongBits(other.average)
+				&& Objects.equals(email, other.email);
 	}
 
 }
