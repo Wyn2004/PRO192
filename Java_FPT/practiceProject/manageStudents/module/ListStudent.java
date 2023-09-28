@@ -1,7 +1,6 @@
 package module;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -100,13 +99,14 @@ public class ListStudent {
 
 			@Override
 			public int compare(Student st1, Student st2) {
-				if (st1.getName().compareToIgnoreCase(st2.getName()) >= 0)
-					return 1;
-				else
-					return -1;
+				return (st1.getName().compareToIgnoreCase(st2.getName()) >= 0) ? 1 : -1;
 			}
 
 		});
+		
+		for (Student student : list) {
+			student.showInfo();
+		}
 	}
 
 	public void sortByAverage() {
@@ -114,11 +114,16 @@ public class ListStudent {
 
 			@Override
 			public int compare(Student st1, Student st2) {
-				if (st1.getAverage() >= st2.getAverage())
-					return 1;
-				else
-					return 0;
+				return (st1.getAverage() >= st2.getAverage()) ? -1 : 1;
 			}
 		});
+		
+		for (Student student : list) {
+			student.showInfo();
+		}
+	}
+	
+	public ArrayList<Student> getData() {
+		return this.list;
 	}
 }

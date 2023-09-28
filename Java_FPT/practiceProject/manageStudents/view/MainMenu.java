@@ -1,12 +1,10 @@
 package view;
 
 import module.ListStudent;
-import module.Validator;
 
 public class MainMenu extends Menu{
-	
-	Validator validator;
-	
+	ListStudent listStudent= new ListStudent();
+
 	public MainMenu() {
 	}
 	
@@ -27,7 +25,6 @@ public class MainMenu extends Menu{
 				break;
 			}
 			case 1: {
-				ListStudent listStudent= new ListStudent();
 				String[] studentOptions=  {"Print list students.",	"Add a student.",
 						"Check list student is empty.",	"Get size of list Student.",
 						"Remove all students in list.", "Remove student by ID.",
@@ -48,4 +45,5 @@ public class MainMenu extends Menu{
 			};
 		} while (choice!=0);
 	}
+	
 }

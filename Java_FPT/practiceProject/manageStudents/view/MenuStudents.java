@@ -70,20 +70,27 @@ public class MenuStudents extends Menu {
 			case 8: {
 				String name = validator.inputString("Enter name you want search: ");
 				if (!listStudent.findByName(name))
-					System.out.println("Student with name "+name+" isn't exist!!!");
+					System.out.println("Student with name " + name + " isn't exist!!!");
 				System.out.println();
+				break;
 			}
 			case 9: {
-
+				listStudent.printScholarShop();
+				System.out.println();
+				break;
 			}
 			case 10: {
-
+				listStudent.sortByName();
+				System.out.println();
+				break;
 			}
 			case 11: {
-
+				listStudent.sortByAverage();
+				System.out.println();
+				break;
 			}
 			}
 		} while (choice != 0);
-
 	}
+	
 }

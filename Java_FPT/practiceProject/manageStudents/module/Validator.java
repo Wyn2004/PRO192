@@ -23,8 +23,32 @@ public class Validator {
 
 	public int inputInt(String notification, int min, int max) {
 		System.out.print(notification);
+		int number = 0;
 		while (true) {
-			int number = Integer.parseInt(sc.nextLine().trim());
+			try {
+			    number = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				System.err.print("Error: Invalid input, please try again: ");
+			    continue;
+			}
+			if (number < min || number > max) {
+				System.err.print("Error: Invalid input, please try again: ");
+				continue;
+			}
+			return number;
+		}
+	}
+	
+	public double inputDouble(String notification, double min, double max) {
+		System.out.print(notification);
+		double number = 0;
+		while (true) {
+			try {
+			    number = Double.parseDouble(sc.nextLine());
+			} catch (NumberFormatException e) {
+				System.err.print("Error: Invalid input, please try again: ");
+			    continue;
+			}
 			if (number < min || number > max) {
 				System.err.print("Error: Invalid input, please try again: ");
 				continue;

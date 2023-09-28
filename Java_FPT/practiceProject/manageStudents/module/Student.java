@@ -8,16 +8,13 @@ public class Student extends Person {
 	private String ID;
 	private double average;
 	private String email;
+	Validator validator = new Validator();
 
 	public Student() {
 	}
-	
-	public Student(String ID)	{
+
+	public Student(String ID) {
 		this.ID = ID;
-	}
-	
-	public Student(String name)	{
-		super(name);
 	}
 
 	public Student(String name, String gender, Day birthDay, String adress, String ID, double average, String email) {
@@ -36,9 +33,7 @@ public class Student extends Person {
 
 		System.out.print("Enter student ID (8 character): ");
 		while (!setID(inputStudent.nextLine()));
-		System.out.print("Enter average point: ");
-		while (!setAverage(inputStudent.nextDouble()));
-		inputStudent.nextLine();
+		this.average = validator.inputDouble("Enter average point: ", 0, 10);
 		System.out.print("Enter email: ");
 		while (!setEmail(inputStudent.nextLine()));
 

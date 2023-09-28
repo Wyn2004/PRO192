@@ -10,6 +10,5 @@ public class testStudents {
 		Menu mainMenu = new MainMenu("Magenement School",options);
 		mainMenu.execute();
 
-		
 	}
 }
