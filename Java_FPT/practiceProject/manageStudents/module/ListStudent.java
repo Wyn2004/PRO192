@@ -83,7 +83,7 @@ public class ListStudent {
 		return (count == 0) ? false : true;
 	}
 
-	public void printScholarShop() {
+	public void printScholarShip() {
 		int count = 0;
 		for (Student student : list) {
 			if (student.getAverage() >= 8) {
@@ -123,7 +123,4 @@ public class ListStudent {
 		}
 	}
 	
-	public ArrayList<Student> getData() {
-		return this.list;
-	}
 }

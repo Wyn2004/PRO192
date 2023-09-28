@@ -75,7 +75,7 @@ public class MenuStudents extends Menu {
 				break;
 			}
 			case 9: {
-				listStudent.printScholarShop();
+				listStudent.printScholarShip();
 				System.out.println();
 				break;
 			}
