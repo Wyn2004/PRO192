@@ -1,12 +1,11 @@
 package module;
 
-import java.util.Scanner;
-
 public class Day {
 
 	private int day;
 	private int month;
 	private int year;
+	Validator validator=  new Validator();
 
 	public Day() {
 	}
@@ -19,12 +18,10 @@ public class Day {
 
 	public void inputBirth() {
 
-		@SuppressWarnings("resource")
-		Scanner inputDay = new Scanner(System.in);
-		System.out.print("Enter birthday (separated by spaces): ");
-		this.day = inputDay.nextInt();
-		this.month = inputDay.nextInt();
-		this.year = inputDay.nextInt();
+		System.out.println("Enter birthday ");
+		while(!setDay(validator.inputInt("Enter day: ", 1, 31)));
+		while(!setDay(validator.inputInt("Enter month: ", 1, 12)));
+		while(!setDay(validator.inputInt("Enter year: ", 1, 999999)));
 
 	}
 
@@ -32,24 +29,27 @@ public class Day {
 		return day;
 	}
 
-	public void setDay(int day) {
+	public boolean setDay(int day) {
 		this.day = day;
+		return true;
 	}
 
 	public int getMonth() {
 		return month;
 	}
 
-	public void setMonth(int month) {
+	public boolean setMonth(int month) {
 		this.month = month;
+		return true;
 	}
 
 	public int getYear() {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public boolean setYear(int year) {
 		this.year = year;
+		return true;
 	}
 
 	@Override

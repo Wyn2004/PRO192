@@ -48,6 +48,7 @@ public class Lector extends Person {
 			this.ID = ID;
 			return true;
 		}
+		System.err.print("Error... Enter again Student ID (8 character): ");
 		return false;
 	}
 
@@ -60,6 +61,7 @@ public class Lector extends Person {
 			this.email = email;
 			return true;
 		}
+		System.err.print("Error... Enter again email (contain '@'): ");
 		return false;
 	}
 
