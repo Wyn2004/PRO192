@@ -1,0 +1,1 @@
+[{"name":"Thang","age":19,"schoolString":"FPTU"},{"name":"Luc","age":19,"schoolString":"FPTU"},{"name":"Phuc","age":18,"schoolString":"FPTU"}]
