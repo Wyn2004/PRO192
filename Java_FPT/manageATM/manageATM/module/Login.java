@@ -8,13 +8,10 @@ public class Login {
 
 	public Login() {
 	}
-	
 
 	public Login(String password) {
 		this.password = password;
 	}
-
-
 
 	public void inputInfo() {
 
@@ -22,7 +19,8 @@ public class Login {
 		String inputUser = validator.inputUserName("Enter user name: ");
 		String inputPass = validator.inputPassWord("Enter password: ");
 		checkLogin(inputUser, inputPass);
-		System.out.println();	}
+		System.out.println();
+	}
 
 	public String getUserName() {
 		return userName;
@@ -37,17 +35,17 @@ public class Login {
 			System.out.println("=================================================");
 			System.out.println("Login succesfull!!!");
 		} else {
-			System.err.println("Error: Login failed, please try again!!!");
+			System.err.println("Error: Login failed, please try again!!!\n");
 			inputInfo();
 		}
 	}
-	
+
 	public boolean checkPassWord(String inputPass) {
-		if (inputPass.equals(this.password)) 
+		if (inputPass.equals(this.password))
 			return true;
 		return false;
 	}
-	
+
 	public void changePasword(String newPassWord) {
 		this.password = newPassWord;
 	}

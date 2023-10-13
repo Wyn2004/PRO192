@@ -1,7 +1,12 @@
 package view;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import module.Account;
 import module.Login;
+import module.Receiver;
+import module.Transfer;
 import module.Validator;
 
 public class Menu {
@@ -28,7 +33,7 @@ public class Menu {
 		System.out.println("-----------------------------------------------------------");
 	}
 
-	public void execute() {
+	public void execute() throws IOException {
 
 		int choice;
 		do {
@@ -104,7 +109,8 @@ public class Menu {
 				break;
 			}
 			case 8: {
-				/////
+				writeFile();
+				System.out.println("Successfully!!!");
 				break;
 			}
 			case 9: {
@@ -116,6 +122,42 @@ public class Menu {
 		System.out.println();
 		System.out.println("\t\t\tThank you very much!!!");
 		System.exit(0);
+	}
+
+	public void writeFile() throws IOException {
+
+		FileOutputStream fos = new FileOutputStream("AccountWrite.txt");
+
+		// Save header
+		fos.write("========\n".getBytes());
+		String line = Account.getInfor();
+		fos.write(line.getBytes());
+		
+		// Save account
+		line = account.getFileInfor();
+		fos.write(line.getBytes());
+		fos.write("========\n\n".getBytes());
+		
+		//Save list receiver
+		fos.write("========\n".getBytes());
+		fos.write(Receiver.getInfor().getBytes());
+		
+		for (Receiver receiver : account.getReceiverList()) {
+			fos.write(receiver.getFileInfor().getBytes());
+		}
+		fos.write("========\n\n".getBytes());
+		
+		//Save list transfer
+		fos.write("========\n".getBytes());
+		fos.write(Transfer.getInfor().getBytes());
+		
+		for (Transfer transfer : account.getTransferList()) {
+			fos.write(transfer.getFileInfor().getBytes());
+			
+		}
+		fos.write("========\n\n".getBytes());
+
+		fos.close();
 	}
 
 }

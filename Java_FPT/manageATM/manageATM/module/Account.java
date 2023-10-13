@@ -2,7 +2,7 @@ package module;
 
 import java.util.ArrayList;
 
-public class Account {
+public class Account implements IFileInfor{
 
 	Validator validator = new Validator();
 	private String fullName;
@@ -75,6 +75,23 @@ public class Account {
 	public void setMoney(int money) {
 		this.money = validator.inputMoney("Enter your money: ", 0, Integer.MAX_VALUE);
 	}
+	
+
+	public ArrayList<Receiver> getReceiverList() {
+		return receiverList;
+	}
+
+	public void setReceiverList(ArrayList<Receiver> receiverList) {
+		this.receiverList = receiverList;
+	}
+
+	public ArrayList<Transfer> getTransferList() {
+		return transferList;
+	}
+
+	public void setTransferList(ArrayList<Transfer> transferList) {
+		this.transferList = transferList;
+	}
 
 	public void addReceiver() {
 		if (this.money > 0) {
@@ -122,5 +139,20 @@ public class Account {
 	public void displayAccount() {
 
 		System.out.println(toString());
+	}
+
+	public static String getInfor()	{
+		return "Infor Account:\n";
+	}
+	
+	@Override
+	public String getFileInfor() {
+		return toString()+"\n";
+	}
+
+	@Override
+	public void putFileInfor(String data) {
+		// TODO Auto-generated method stub
+		
 	}
 }

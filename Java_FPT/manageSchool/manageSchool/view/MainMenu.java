@@ -1,5 +1,8 @@
 package view;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 import module.ListLector;
 import module.ListStudent;
 
@@ -46,8 +49,20 @@ public class MainMenu extends Menu {
 				break;
 
 			}
+			case 3:	{
+				//////
+				break;
+			}
+			case 4:	{
+				/////
+				break;
+			}
 			}
 		} while (choice != 0);
 	}
 
+	public void saveFile() throws FileNotFoundException {
+		FileOutputStream fos = new FileOutputStream("Schoolutput.txt");
+		
+	}
 }

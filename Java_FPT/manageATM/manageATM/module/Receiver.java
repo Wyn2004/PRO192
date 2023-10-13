@@ -3,7 +3,7 @@ package module;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Receiver {
+public class Receiver implements IFileInfor{
 
 	private String note;
 	private int money;
@@ -52,11 +52,26 @@ public class Receiver {
 	}
 
 	@Override
-	public String toString() {
+	public  String toString() {
 		return "Receiver: [note=" + note + ", money=" + money + "$, create=" + getCreateString() + "]";
 	}
 
 	public void displayReceiver() {
 		System.out.println(toString());
+	}
+
+	public static String getInfor()	{
+		return "Infor History Receiver:\n";
+	}
+	
+	@Override
+	public String getFileInfor() {
+		return toString()+"\n";
+	}
+
+	@Override
+	public void putFileInfor(String data) {
+		// TODO Auto-generated method stub
+		
 	}
 }

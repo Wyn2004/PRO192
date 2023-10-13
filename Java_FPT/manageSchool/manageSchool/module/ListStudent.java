@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ListStudent {
+public class ListStudent implements IFileInfor{
 
 	ArrayList<Student> list = new ArrayList<>();
 
@@ -121,6 +121,18 @@ public class ListStudent {
 		for (Student student : list) {
 			student.showInfo();
 		}
+	}
+
+	@Override
+	public String writeFile() {
+		
+		return null;
+	}
+
+	@Override
+	public void readFile(String data) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

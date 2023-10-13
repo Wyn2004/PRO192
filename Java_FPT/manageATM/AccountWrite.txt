@@ -1,0 +1,16 @@
+========
+Infor Account:
+Account: [fullName=Trinh Quoc Thang123, numRoll=1238912371, phoneNumber=98123789174, adress=quy nhon, money=237232$]
+========
+
+========
+Infor History Receiver:
+Receiver: [note=tien bet, money=3222$, create=01:22:21 13/10/2023]
+Receiver: [note=tien me chuyen, money=10$, create=01:22:42 13/10/2023]
+========
+
+========
+Infor History Transfer:
+Transfer: [numRollTransfer=32478563256, nameTransfer=Tin, note=tien choi gai, money=234$, create=01:23:17 13/10/2023]
+========
+

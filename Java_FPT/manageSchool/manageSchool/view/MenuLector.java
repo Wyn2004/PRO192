@@ -22,6 +22,7 @@ public class MenuLector extends Menu{
 		int choice;
 		
 		do {
+			
 			choice = displayMenu();
 			System.out.println();
 			switch (choice) {

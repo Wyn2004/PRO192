@@ -3,7 +3,7 @@ package module;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Transfer {
+public class Transfer implements IFileInfor{
 
 	private String numRollTransfer;
 	private String nameTransfer;
@@ -85,6 +85,21 @@ public class Transfer {
 	
 	public void displayTransfer() {
 		System.out.println(toString());
+	}
+	
+	public static String getInfor()	{
+		return "Infor History Transfer:\n";
+	}
+
+	@Override
+	public String getFileInfor() {
+		return toString()+"\n";
+	}
+
+	@Override
+	public void putFileInfor(String data) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
