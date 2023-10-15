@@ -9,11 +9,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import module.IFileInfor;
 import module.ListLector;
 import module.ListStudent;
 import module.School;
 
-public class MainMenu extends Menu {
+public class MainMenu extends Menu implements IFileInfor {
 
 	private static School school = new School();
 	//
@@ -68,7 +69,7 @@ public class MainMenu extends Menu {
 			}
 			case 3: {
 				try {
-					saveFile();
+					writeFile();
 					System.out.println("Export data successfully, data save with this format!!!");
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -88,7 +89,8 @@ public class MainMenu extends Menu {
 		} while (choice != 0);
 	}
 
-	public static void saveFile() throws IOException {
+	@Override
+	public void writeFile() throws IOException {
 
 		FileOutputStream fos = new FileOutputStream("School.txt");
 
@@ -100,6 +102,7 @@ public class MainMenu extends Menu {
 
 	}
 
+	@Override
 	public void readFile() throws IOException {
 
 		Gson gson = new Gson();
@@ -114,4 +117,5 @@ public class MainMenu extends Menu {
 		school.display();
 		System.out.println();
 	}
+
 }

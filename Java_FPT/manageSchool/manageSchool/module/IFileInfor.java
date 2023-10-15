@@ -1,7 +1,9 @@
 package module;
 
+import java.io.IOException;
+
 public interface IFileInfor {
 
-	public String writeFile();
-	public void readFile(String data);
+	public void writeFile() throws IOException;
+	public void readFile() throws IOException;
 }
