@@ -1,7 +1,6 @@
 package module;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.google.gson.annotations.Expose;
 

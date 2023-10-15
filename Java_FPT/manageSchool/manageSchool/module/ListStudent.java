@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
-public class ListStudent implements Serializable{
+public class ListStudent implements Serializable {
 	@Expose
 	private List<Student> list = new ArrayList<>();
 
@@ -115,7 +115,7 @@ public class ListStudent implements Serializable{
 			}
 
 		});
-		
+
 		for (Student student : list) {
 			student.showInfo();
 		}
@@ -129,10 +129,10 @@ public class ListStudent implements Serializable{
 				return (st1.getAverage() >= st2.getAverage()) ? -1 : 1;
 			}
 		});
-		
+
 		for (Student student : list) {
 			student.showInfo();
 		}
 	}
-	
+
 }

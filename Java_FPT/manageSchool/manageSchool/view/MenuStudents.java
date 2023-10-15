@@ -1,8 +1,5 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import module.ListStudent;
 import module.Student;
 import module.Validator;
@@ -53,8 +50,8 @@ public class MenuStudents extends Menu {
 				System.out.println();
 				break;
 			}
-			case 5:	{
-				//// Edit 
+			case 5: {
+				//// Edit
 				break;
 			}
 			case 6: {
@@ -67,7 +64,7 @@ public class MenuStudents extends Menu {
 				listStudent.removeByID(studentID);
 				break;
 			}
-			case 8:	{
+			case 8: {
 				//////// Remove by email
 				break;
 			}
@@ -85,11 +82,11 @@ public class MenuStudents extends Menu {
 				System.out.println();
 				break;
 			}
-			case 11:	{
+			case 11: {
 				////// find by email
 				break;
 			}
-			case 12:	{
+			case 12: {
 				////// Find by major
 			}
 			case 13: {
@@ -110,5 +107,5 @@ public class MenuStudents extends Menu {
 			}
 		} while (choice != 0);
 	}
-	
+
 }

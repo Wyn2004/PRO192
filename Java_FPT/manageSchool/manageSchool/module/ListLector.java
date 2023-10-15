@@ -8,19 +8,18 @@ import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
-public class ListLector implements Serializable{
-	
+public class ListLector implements Serializable {
+
 	@Expose
 	private List<Lector> list = new ArrayList<>();
-	
+
 	public ListLector() {
 	}
-	
+
 	public ListLector(List<Lector> list) {
 		this.list = list;
 	}
-	
-	
+
 	public List<Lector> getList() {
 		return list;
 	}
@@ -39,13 +38,13 @@ public class ListLector implements Serializable{
 			System.out.println("List lector is empty!!!");
 		System.out.println();
 	}
-	
+
 	public void add(Lector lector) {
 		list.add(lector);
 		System.out.println("Done!!!");
 		System.out.println();
 	}
-	
+
 	public int getSize() {
 		return list.size();
 	}
@@ -53,12 +52,12 @@ public class ListLector implements Serializable{
 	public Boolean isEmpty() {
 		return list.isEmpty();
 	}
-	
+
 	public void removeAll() {
 		list.removeAll(list);
 		System.out.println("List lector had remove!!!");
 	}
-	
+
 	public void removeByID(Lector lID) {
 		int count = 0;
 		List<Lector> updateListLectors = new ArrayList<>();
@@ -75,7 +74,7 @@ public class ListLector implements Serializable{
 		this.list = updateListLectors;
 		System.out.println();
 	}
-	
+
 	public boolean findByID(Lector lID) {
 		for (Lector lector : list) {
 			if (lector.getID().equals(lector.getID())) {
@@ -96,7 +95,7 @@ public class ListLector implements Serializable{
 		}
 		return (count == 0) ? false : true;
 	}
-	
+
 	public void sortByName() {
 		Collections.sort(this.list, new Comparator<Lector>() {
 
@@ -106,8 +105,8 @@ public class ListLector implements Serializable{
 			}
 
 		});
-		
-		for (Lector lector: list) {
+
+		for (Lector lector : list) {
 			lector.showInfo();
 		}
 	}

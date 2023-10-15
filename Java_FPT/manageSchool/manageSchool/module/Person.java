@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import com.google.gson.annotations.Expose;
 
-public class Person implements Serializable{
-	
+public class Person implements Serializable {
+
 	@Expose
 	private String name;
 	@Expose
@@ -33,12 +33,15 @@ public class Person implements Serializable{
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter name: ");
-		while(!setName(scanner.nextLine().trim()));
+		while (!setName(scanner.nextLine().trim()))
+			;
 		System.out.print("Enter gender: ");
-		while(!setGender(scanner.nextLine().trim()));
+		while (!setGender(scanner.nextLine().trim()))
+			;
 		birthDay.inputBirth();
 		System.out.print("Enter adress: ");
-		while(!setAdress(scanner.nextLine().trim()));
+		while (!setAdress(scanner.nextLine().trim()))
+			;
 
 	}
 
@@ -51,7 +54,7 @@ public class Person implements Serializable{
 	}
 
 	public boolean setName(String name) {
-		if (name!=null && name.length()>0) {
+		if (name != null && name.length() > 0) {
 			this.name = name;
 			return true;
 		} else {
@@ -65,7 +68,7 @@ public class Person implements Serializable{
 	}
 
 	public boolean setGender(String gender) {
-		if (gender!=null && gender.length()>0) {
+		if (gender != null && gender.length() > 0) {
 			this.gender = gender.toUpperCase();
 			return true;
 		} else {
@@ -87,13 +90,14 @@ public class Person implements Serializable{
 	}
 
 	public boolean setAdress(String adress) {
-		if (adress!=null && adress.length()>0) {
+		if (adress != null && adress.length() > 0) {
 			this.adress = adress.toUpperCase();
 			return true;
 		} else {
 			System.err.print("Error... Invalid input please try again:");
 			return false;
-		}	}
+		}
+	}
 
 	public String toStringPerson() {
 		return "Person: [name=" + name + ", gender=" + gender + ", birthDay=" + birthDay + ", adress=" + adress + "]";

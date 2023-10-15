@@ -26,10 +26,10 @@ public class Validator {
 		int number = 0;
 		while (true) {
 			try {
-			    number = Integer.parseInt(sc.nextLine().trim());
+				number = Integer.parseInt(sc.nextLine().trim());
 			} catch (NumberFormatException e) {
 				System.err.print("Error: Invalid input, please try again: ");
-			    continue;
+				continue;
 			}
 			if (number < min || number > max) {
 				System.err.print("Error: Invalid input, please try again: ");
@@ -38,16 +38,16 @@ public class Validator {
 			return number;
 		}
 	}
-	
+
 	public double inputDouble(String notification, double min, double max) {
 		System.out.print(notification);
 		double number = 0;
 		while (true) {
 			try {
-			    number = Double.parseDouble(sc.nextLine().trim());
+				number = Double.parseDouble(sc.nextLine().trim());
 			} catch (NumberFormatException e) {
 				System.err.print("Error: Invalid input, please try again: ");
-			    continue;
+				continue;
 			}
 			if (number < min || number > max) {
 				System.err.print("Error: Invalid input, please try again: ");
@@ -60,7 +60,8 @@ public class Validator {
 	public String inputID(String notification) {
 		System.out.print(notification);
 		Student student = new Student();
-		while(!student.setID(sc.nextLine().trim()));
+		while (!student.setID(sc.nextLine().trim()))
+			;
 		return student.getID();
 	}
 

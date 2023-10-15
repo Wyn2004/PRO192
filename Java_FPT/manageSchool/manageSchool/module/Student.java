@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import com.google.gson.annotations.Expose;
 
-public class Student extends Person implements Serializable{
+public class Student extends Person implements Serializable {
 
 	@Expose
 	private String ID;
@@ -25,7 +25,8 @@ public class Student extends Person implements Serializable{
 		this.ID = ID;
 	}
 
-	public Student(String name, String gender, Day birthDay, String adress, String ID, double average, String email, String major) {
+	public Student(String name, String gender, Day birthDay, String adress, String ID, double average, String email,
+			String major) {
 		super(name, gender, birthDay, adress);
 		this.ID = ID;
 		this.average = average;
@@ -41,12 +42,15 @@ public class Student extends Person implements Serializable{
 		Scanner inputStudent = new Scanner(System.in);
 
 		System.out.print("Enter student ID (8 character): ");
-		while (!setID(inputStudent.nextLine().trim()));
+		while (!setID(inputStudent.nextLine().trim()))
+			;
 		this.average = validator.inputDouble("Enter average point: ", 0, 10);
 		System.out.print("Enter email: ");
-		while (!setEmail(inputStudent.nextLine().trim()));
+		while (!setEmail(inputStudent.nextLine().trim()))
+			;
 		System.out.print("Enter major: ");
-		while (!setMajor(inputStudent.nextLine().trim()));
+		while (!setMajor(inputStudent.nextLine().trim()))
+			;
 		System.out.println();
 	}
 
@@ -98,21 +102,20 @@ public class Student extends Person implements Serializable{
 		}
 
 	}
-	
 
 	public String getMajor() {
 		return major;
 	}
 
 	public boolean setMajor(String major) {
-		if (major!=null && major.length()>0)	{
+		if (major != null && major.length() > 0) {
 			this.major = major.toUpperCase();
 			return true;
 		} else {
 			System.err.print("Error... Enter again major: ");
 			return false;
 		}
-		
+
 	}
 
 	public boolean checkScholarship() {
@@ -126,10 +129,10 @@ public class Student extends Person implements Serializable{
 		return "Student [ID=" + ID + ", average=" + average + ", email=" + email + ", major=" + major + "]";
 	}
 
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(ID, average, email);
-//	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(ID, average, email);
+	}
 
 	@Override
 	public boolean equals(Object obj) {

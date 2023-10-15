@@ -4,14 +4,14 @@ import module.Lector;
 import module.ListLector;
 import module.Validator;
 
-public class MenuLector extends Menu{
-	
+public class MenuLector extends Menu {
+
 	ListLector listLector;
 	Validator validator = new Validator();
-	
+
 	public MenuLector() {
 	}
-	
+
 	public MenuLector(String notification, String[] opStrings, ListLector listLector) {
 		super(notification, opStrings);
 		this.listLector = listLector;
@@ -20,9 +20,9 @@ public class MenuLector extends Menu{
 	@Override
 	public void execute() {
 		int choice;
-		
+
 		do {
-			
+
 			choice = displayMenu();
 			System.out.println();
 			switch (choice) {
@@ -51,8 +51,8 @@ public class MenuLector extends Menu{
 				System.out.println();
 				break;
 			}
-			case 5:	{
-				////// Edit 
+			case 5: {
+				////// Edit
 				break;
 			}
 			case 6: {
@@ -65,7 +65,7 @@ public class MenuLector extends Menu{
 				listLector.removeByID(lectorID);
 				break;
 			}
-			case 8:	{
+			case 8: {
 				////// Remove by email
 				break;
 			}
@@ -83,11 +83,11 @@ public class MenuLector extends Menu{
 				System.out.println();
 				break;
 			}
-			case 11:	{
+			case 11: {
 				////// Find by email;
 				break;
 			}
-			case 12 :	{
+			case 12: {
 				////// Find by major
 				break;
 			}
@@ -97,6 +97,6 @@ public class MenuLector extends Menu{
 				break;
 			}
 			}
-		} while (choice!=0);
+		} while (choice != 0);
 	}
 }
