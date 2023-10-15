@@ -1,12 +1,19 @@
 package module;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Person {
+import com.google.gson.annotations.Expose;
 
+public class Person implements Serializable{
+	
+	@Expose
 	private String name;
+	@Expose
 	private String gender;
+	@Expose
 	private Day birthDay = new Day();
+	@Expose
 	private String adress;
 
 	public Person() {
@@ -26,12 +33,12 @@ public class Person {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Enter name: ");
-		this.name = scanner.nextLine();
+		while(!setName(scanner.nextLine().trim()));
 		System.out.print("Enter gender: ");
-		this.gender = scanner.nextLine();
+		while(!setGender(scanner.nextLine().trim()));
 		birthDay.inputBirth();
 		System.out.print("Enter adress: ");
-		this.adress = scanner.nextLine();
+		while(!setAdress(scanner.nextLine().trim()));
 
 	}
 
@@ -43,16 +50,28 @@ public class Person {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public boolean setName(String name) {
+		if (name!=null && name.length()>0) {
+			this.name = name;
+			return true;
+		} else {
+			System.err.print("Error... Invalid input please try again:");
+			return false;
+		}
 	}
 
 	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public boolean setGender(String gender) {
+		if (gender!=null && gender.length()>0) {
+			this.gender = gender.toUpperCase();
+			return true;
+		} else {
+			System.err.print("Error... Invalid input please try again:");
+			return false;
+		}
 	}
 
 	public Day getBirthDay() {
@@ -67,9 +86,14 @@ public class Person {
 		return adress;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+	public boolean setAdress(String adress) {
+		if (adress!=null && adress.length()>0) {
+			this.adress = adress.toUpperCase();
+			return true;
+		} else {
+			System.err.print("Error... Invalid input please try again:");
+			return false;
+		}	}
 
 	public String toStringPerson() {
 		return "Person: [name=" + name + ", gender=" + gender + ", birthDay=" + birthDay + ", adress=" + adress + "]";

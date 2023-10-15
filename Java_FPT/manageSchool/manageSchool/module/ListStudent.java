@@ -1,17 +1,29 @@
 package module;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
-public class ListStudent implements IFileInfor{
+import com.google.gson.annotations.Expose;
 
-	ArrayList<Student> list = new ArrayList<>();
+public class ListStudent implements Serializable{
+	@Expose
+	private List<Student> list = new ArrayList<>();
 
 	public ListStudent() {
 	}
 
-	public ListStudent(ArrayList<Student> list) {
+	public ListStudent(List<Student> list) {
+		this.list = list;
+	}
+
+	public List<Student> getList() {
+		return list;
+	}
+
+	public void setList(List<Student> list) {
 		this.list = list;
 	}
 
@@ -47,7 +59,7 @@ public class ListStudent implements IFileInfor{
 
 	public void removeByID(Student stdID) {
 		int count = 0;
-		ArrayList<Student> updateListStudent = new ArrayList<>();
+		List<Student> updateListStudent = new ArrayList<>();
 		for (Student student : list) {
 			if (!student.getID().equals(stdID.getID())) {
 				updateListStudent.add(student);
@@ -121,18 +133,6 @@ public class ListStudent implements IFileInfor{
 		for (Student student : list) {
 			student.showInfo();
 		}
-	}
-
-	@Override
-	public String writeFile() {
-		
-		return null;
-	}
-
-	@Override
-	public void readFile(String data) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

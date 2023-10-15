@@ -1,11 +1,18 @@
 package module;
 
-public class Day {
+import java.io.Serializable;
 
+import com.google.gson.annotations.Expose;
+
+public class Day implements Serializable{
+
+	@Expose
 	private int day;
+	@Expose
 	private int month;
+	@Expose
 	private int year;
-	Validator validator=  new Validator();
+	private transient Validator validator=  new Validator();
 
 	public Day() {
 	}
@@ -20,8 +27,8 @@ public class Day {
 
 		System.out.println("Enter birthday ");
 		while(!setDay(validator.inputInt("Enter day: ", 1, 31)));
-		while(!setDay(validator.inputInt("Enter month: ", 1, 12)));
-		while(!setDay(validator.inputInt("Enter year: ", 1, 999999)));
+		while(!setMonth(validator.inputInt("Enter month: ", 1, 12)));
+		while(!setYear(validator.inputInt("Enter year: ", 1, 999999)));
 
 	}
 

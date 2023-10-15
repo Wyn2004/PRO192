@@ -1,12 +1,19 @@
 package module;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Lector extends Person {
+import com.google.gson.annotations.Expose;
 
+public class Lector extends Person implements Serializable {
+
+	@Expose
 	private String ID;
+	@Expose
 	private String email;
+	@Expose
+	private String subject;
 
 	public Lector() {
 	}
@@ -15,10 +22,11 @@ public class Lector extends Person {
 		this.ID = ID;
 	}
 
-	public Lector(String name, String gender, Day birthDay, String adress, String ID, String email) {
+	public Lector(String name, String gender, Day birthDay, String adress, String ID, String email, String subject) {
 		super(name, gender, birthDay, adress);
 		this.ID = ID;
 		this.email = email;
+		this.subject = subject;
 	}
 
 	@Override
@@ -27,9 +35,13 @@ public class Lector extends Person {
 		@SuppressWarnings("resource")
 		Scanner inputLector = new Scanner(System.in);
 		System.out.print("Enter lector ID (8 character): ");
-		while (!setID(inputLector.nextLine()));
+		while (!setID(inputLector.nextLine().trim()))
+			;
 		System.out.print("Enter email: ");
-		while (!setEmail(inputLector.nextLine()))
+		while (!setEmail(inputLector.nextLine().trim()))
+			;
+		System.out.print("Enter subject: ");
+		while (!setSubject(inputLector.nextLine().trim()))
 			;
 	}
 
@@ -45,7 +57,7 @@ public class Lector extends Person {
 
 	public boolean setID(String ID) {
 		if (ID != null && ID.length() == 8) {
-			this.ID = ID;
+			this.ID = ID.toUpperCase();
 			return true;
 		}
 		System.err.print("Error... Enter again Student ID (8 character): ");
@@ -65,8 +77,22 @@ public class Lector extends Person {
 		return false;
 	}
 
+	public String getMajor() {
+		return subject;
+	}
+
+	public boolean setSubject(String subject) {
+		if (subject != null && subject.length() > 0) {
+			this.subject = subject.toUpperCase();
+			return true;
+		} else {
+			System.err.print("Error... Enter again subject: ");
+			return false;
+		}
+	}
+
 	public String toStringLector() {
-		return " Lector: [ID=" + ID + ", email=" + email + "]";
+		return "Lector [ID=" + ID + ", email=" + email + ", subject=" + subject + "]";
 	}
 
 	@Override

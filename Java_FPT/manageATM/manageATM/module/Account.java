@@ -1,28 +1,41 @@
 package module;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Account implements IFileInfor{
+public class Account implements IFileInfor,Serializable{
 
-	Validator validator = new Validator();
+	private Validator validator = new Validator();
 	private String fullName;
 	private String numRoll;
 	private String phoneNumber;
 	private String adress;
 	private int money;
-	private ArrayList<Receiver> receiverList = new ArrayList<>();
-	private ArrayList<Transfer> transferList = new ArrayList<>();
+	private List<Receiver> receiverList = new ArrayList<>();
+	private List<Transfer> transferList = new ArrayList<>();
 
 	public Account() {
 	}
 
-	public Account(String fullName, String numRoll, String phoneNumber, String adress, int money) {
-
+//	public Account(String fullName, String numRoll, String phoneNumber, String adress, int money) {
+//
+//		this.fullName = fullName;
+//		this.numRoll = numRoll;
+//		this.phoneNumber = phoneNumber;
+//		this.adress = adress;
+//		this.money = money;
+//	}
+	
+	public Account(String fullName, String numRoll, String phoneNumber, String adress, int money,
+			ArrayList<Receiver> receiverList, ArrayList<Transfer> transferList) {
 		this.fullName = fullName;
 		this.numRoll = numRoll;
 		this.phoneNumber = phoneNumber;
 		this.adress = adress;
 		this.money = money;
+		this.receiverList = receiverList;
+		this.transferList = transferList;
 	}
 
 	public void inputAccount() {
@@ -77,19 +90,19 @@ public class Account implements IFileInfor{
 	}
 	
 
-	public ArrayList<Receiver> getReceiverList() {
+	public List<Receiver> getReceiverList() {
 		return receiverList;
 	}
 
-	public void setReceiverList(ArrayList<Receiver> receiverList) {
+	public void setReceiverList(List<Receiver> receiverList) {
 		this.receiverList = receiverList;
 	}
 
-	public ArrayList<Transfer> getTransferList() {
+	public List<Transfer> getTransferList() {
 		return transferList;
 	}
 
-	public void setTransferList(ArrayList<Transfer> transferList) {
+	public void setTransferList(List<Transfer> transferList) {
 		this.transferList = transferList;
 	}
 
@@ -129,8 +142,7 @@ public class Account implements IFileInfor{
 			System.err.println("There have been no previous transferred !!!");
 	}
 
-	@Override
-	public String toString() {
+	public String toStringAccount() {
 
 		return "Account: [fullName=" + fullName + ", numRoll=" + numRoll + ", phoneNumber=" + phoneNumber + ", adress="
 				+ adress + ", money=" + money + "$]";
@@ -138,7 +150,7 @@ public class Account implements IFileInfor{
 
 	public void displayAccount() {
 
-		System.out.println(toString());
+		System.out.println(toStringAccount());
 	}
 
 	public static String getInfor()	{

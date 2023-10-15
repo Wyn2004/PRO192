@@ -12,7 +12,7 @@ public class Validator {
 	public String inputString(String notification) {
 		System.out.print(notification);
 		while (true) {
-			String result = sc.nextLine();
+			String result = sc.nextLine().trim();
 			if (result == null || result.length() == 0) {
 				System.err.print("Error: Invalid input, please try again: ");
 				continue;
@@ -26,7 +26,7 @@ public class Validator {
 		int number = 0;
 		while (true) {
 			try {
-			    number = Integer.parseInt(sc.nextLine());
+			    number = Integer.parseInt(sc.nextLine().trim());
 			} catch (NumberFormatException e) {
 				System.err.print("Error: Invalid input, please try again: ");
 			    continue;
@@ -44,7 +44,7 @@ public class Validator {
 		double number = 0;
 		while (true) {
 			try {
-			    number = Double.parseDouble(sc.nextLine());
+			    number = Double.parseDouble(sc.nextLine().trim());
 			} catch (NumberFormatException e) {
 				System.err.print("Error: Invalid input, please try again: ");
 			    continue;
@@ -60,7 +60,7 @@ public class Validator {
 	public String inputID(String notification) {
 		System.out.print(notification);
 		Student student = new Student();
-		while(!student.setID(sc.nextLine()));
+		while(!student.setID(sc.nextLine().trim()));
 		return student.getID();
 	}
 

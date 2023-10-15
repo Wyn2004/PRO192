@@ -1,9 +1,10 @@
 package module;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Receiver implements IFileInfor{
+public class Receiver implements IFileInfor, Serializable{
 
 	private String note;
 	private int money;
@@ -51,13 +52,12 @@ public class Receiver implements IFileInfor{
 		return dateFormat.format(create).toString();
 	}
 
-	@Override
-	public  String toString() {
-		return "Receiver: [note=" + note + ", money=" + money + "$, create=" + getCreateString() + "]";
+	public  String toStringReceiver() {
+		return "Receiver [note=" + note + ", money=" + money + "$, create=" + getCreateString() + "]";
 	}
 
 	public void displayReceiver() {
-		System.out.println(toString());
+		System.out.println(toStringReceiver());
 	}
 
 	public static String getInfor()	{

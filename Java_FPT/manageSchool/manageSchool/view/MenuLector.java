@@ -51,31 +51,47 @@ public class MenuLector extends Menu{
 				System.out.println();
 				break;
 			}
-			case 5: {
+			case 5:	{
+				////// Edit 
+				break;
+			}
+			case 6: {
 				listLector.removeAll();
 				System.out.println();
 				break;
 			}
-			case 6: {
+			case 7: {
 				Lector lectorID = new Lector(validator.inputID("Enter your ID you want remove: "));
 				listLector.removeByID(lectorID);
 				break;
 			}
-			case 7: {
-				Lector lectorID = new Lector(validator.inputID("Enter your ID you want check: "));
-				if (!listLector.findByID(lectorID))
-					System.out.println("Lector with ID: " + lectorID.getID() + " isn't exist!!!");
-				System.out.println();
-				break;
-			}
-			case 8: {
-				String name = validator.inputString("Enter name you want search: ");
-				if (!listLector.findByName(name))
-					System.out.println("Lector with name " + name + " isn't exist!!!");
-				System.out.println();
+			case 8:	{
+				////// Remove by email
 				break;
 			}
 			case 9: {
+				Lector lectorID = new Lector(validator.inputID("Enter your ID you want check: "));
+				if (!listLector.findByID(lectorID))
+					System.err.println("Lector with ID: " + lectorID.getID() + " isn't exist!!!");
+				System.out.println();
+				break;
+			}
+			case 10: {
+				String name = validator.inputString("Enter name you want search: ");
+				if (!listLector.findByName(name))
+					System.err.println("Lector with name " + name + " isn't exist!!!");
+				System.out.println();
+				break;
+			}
+			case 11:	{
+				////// Find by email;
+				break;
+			}
+			case 12 :	{
+				////// Find by major
+				break;
+			}
+			case 13: {
 				listLector.sortByName();
 				System.out.println();
 				break;

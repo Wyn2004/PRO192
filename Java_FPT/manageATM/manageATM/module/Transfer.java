@@ -1,9 +1,10 @@
 package module;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Transfer implements IFileInfor{
+public class Transfer implements IFileInfor,Serializable{
 
 	private String numRollTransfer;
 	private String nameTransfer;
@@ -77,14 +78,13 @@ public class Transfer implements IFileInfor{
 		return dateFormat.format(create).toString();
 	}
 
-	@Override
-	public String toString() {
+	public String toStringTransfer() {
 		return "Transfer: [numRollTransfer=" + numRollTransfer + ", nameTransfer=" + nameTransfer + ", note=" + note
 				+ ", money=" + money + "$, create=" + getCreateString() + "]";
 	}
 	
 	public void displayTransfer() {
-		System.out.println(toString());
+		System.out.println(toStringTransfer());
 	}
 	
 	public static String getInfor()	{

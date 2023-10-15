@@ -1,16 +1,18 @@
 package view;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
 
 import module.Account;
 import module.Login;
 import module.Receiver;
-import module.Transfer;
 import module.Validator;
 
 public class Menu {
-
+ 
 	Validator validator = new Validator();
 	Account account = new Account();
 	Login login = new Login();
@@ -124,40 +126,54 @@ public class Menu {
 		System.exit(0);
 	}
 
-	public void writeFile() throws IOException {
+//	public void writeFile() throws IOException {
+//
+//		FileOutputStream fos = new FileOutputStream("AccountWrite.txt");
+//
+//		// Save header
+//		fos.write("========\n".getBytes());
+//		String line = Account.getInfor();
+//		fos.write(line.getBytes());
+//		
+//		// Save account
+//		line = account.getFileInfor();
+//		fos.write(line.getBytes());
+//		fos.write("========\n\n".getBytes());
+//		
+//		//Save list receiver
+//		fos.write("========\n".getBytes());
+//		fos.write(Receiver.getInfor().getBytes());
+//		
+//		for (Receiver receiver : account.getReceiverList()) {
+//			fos.write(receiver.getFileInfor().getBytes());
+//		}
+//		fos.write("========\n\n".getBytes());
+//		
+//		//Save list transfer
+//		fos.write("========\n".getBytes());
+//		fos.write(Transfer.getInfor().getBytes());
+//		
+//		for (Transfer transfer : account.getTransferList()) {
+//			fos.write(transfer.getFileInfor().getBytes());
+//			
+//		}
+//		fos.write("========\n\n".getBytes());
+//
+//		fos.close();
+//	}
 
-		FileOutputStream fos = new FileOutputStream("AccountWrite.txt");
+	public void writeFile() {
 
-		// Save header
-		fos.write("========\n".getBytes());
-		String line = Account.getInfor();
-		fos.write(line.getBytes());
-		
-		// Save account
-		line = account.getFileInfor();
-		fos.write(line.getBytes());
-		fos.write("========\n\n".getBytes());
-		
-		//Save list receiver
-		fos.write("========\n".getBytes());
-		fos.write(Receiver.getInfor().getBytes());
-		
-		for (Receiver receiver : account.getReceiverList()) {
-			fos.write(receiver.getFileInfor().getBytes());
-		}
-		fos.write("========\n\n".getBytes());
-		
-		//Save list transfer
-		fos.write("========\n".getBytes());
-		fos.write(Transfer.getInfor().getBytes());
-		
-		for (Transfer transfer : account.getTransferList()) {
-			fos.write(transfer.getFileInfor().getBytes());
-			
-		}
-		fos.write("========\n\n".getBytes());
+//		FileOutputStream fos = new FileOutputStream("AccountWrite.txt");
 
-		fos.close();
+		Gson gson = new Gson();
+
+		List<Receiver> list= this.account.getReceiverList();
+				
+		System.out.println(list);
+		String data = gson.toJson(list);
+		System.out.println(data);
+//		fos.write(data.getBytes());
+//		fos.close();
 	}
-
 }

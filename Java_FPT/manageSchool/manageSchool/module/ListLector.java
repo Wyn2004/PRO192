@@ -1,20 +1,34 @@
 package module;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
-public class ListLector {
+import com.google.gson.annotations.Expose;
+
+public class ListLector implements Serializable{
 	
-	ArrayList<Lector> list = new ArrayList<>();
+	@Expose
+	private List<Lector> list = new ArrayList<>();
 	
 	public ListLector() {
 	}
 	
-	public ListLector(ArrayList<Lector> list) {
+	public ListLector(List<Lector> list) {
 		this.list = list;
 	}
 	
+	
+	public List<Lector> getList() {
+		return list;
+	}
+
+	public void setList(List<Lector> list) {
+		this.list = list;
+	}
+
 	public void printListLector() {
 		if (!isEmpty()) {
 			System.out.println("List lector: ");
@@ -47,7 +61,7 @@ public class ListLector {
 	
 	public void removeByID(Lector lID) {
 		int count = 0;
-		ArrayList<Lector> updateListLectors = new ArrayList<>();
+		List<Lector> updateListLectors = new ArrayList<>();
 		for (Lector lector : list) {
 			if (!lector.getID().equals(lID.getID())) {
 				updateListLectors.add(lector);

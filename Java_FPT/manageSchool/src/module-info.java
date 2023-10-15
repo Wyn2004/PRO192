@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author trinhquocthang
- *
- */
-module manageSchool {
-}

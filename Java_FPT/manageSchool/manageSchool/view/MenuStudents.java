@@ -1,13 +1,16 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import module.ListStudent;
 import module.Student;
 import module.Validator;
 
 public class MenuStudents extends Menu {
 
-	ListStudent listStudent;
-	Validator validator = new Validator();
+	private ListStudent listStudent;
+	private Validator validator = new Validator();
 
 	public MenuStudents() {
 	}
@@ -50,41 +53,56 @@ public class MenuStudents extends Menu {
 				System.out.println();
 				break;
 			}
-			case 5: {
+			case 5:	{
+				//// Edit 
+				break;
+			}
+			case 6: {
 				listStudent.removeAll();
 				System.out.println();
 				break;
 			}
-			case 6: {
+			case 7: {
 				Student studentID = new Student(validator.inputID("Enter your ID you want remove: "));
 				listStudent.removeByID(studentID);
 				break;
 			}
-			case 7: {
-				Student studentID = new Student(validator.inputID("Enter your ID you want check: "));
-				if (!listStudent.findByID(studentID))
-					System.out.println("Student with ID: " + studentID.getID() + " isn't exist!!!");
-				System.out.println();
-				break;
-			}
-			case 8: {
-				String name = validator.inputString("Enter name you want search: ");
-				if (!listStudent.findByName(name))
-					System.out.println("Student with name " + name + " isn't exist!!!");
-				System.out.println();
+			case 8:	{
+				//////// Remove by email
 				break;
 			}
 			case 9: {
-				listStudent.printScholarShip();
+				Student studentID = new Student(validator.inputID("Enter your ID you want check: "));
+				if (!listStudent.findByID(studentID))
+					System.err.println("Student with ID: " + studentID.getID() + " isn't exist!!!");
 				System.out.println();
 				break;
 			}
 			case 10: {
+				String name = validator.inputString("Enter name you want search: ");
+				if (!listStudent.findByName(name))
+					System.err.println("Student with name " + name + " isn't exist!!!");
+				System.out.println();
+				break;
+			}
+			case 11:	{
+				////// find by email
+				break;
+			}
+			case 12:	{
+				////// Find by major
+			}
+			case 13: {
+				listStudent.printScholarShip();
+				System.out.println();
+				break;
+			}
+			case 14: {
 				listStudent.sortByName();
 				System.out.println();
 				break;
 			}
-			case 11: {
+			case 15: {
 				listStudent.sortByAverage();
 				System.out.println();
 				break;
