@@ -35,7 +35,7 @@ public class ListLector implements Serializable {
 				lector.showInfo();
 			}
 		} else
-			System.out.println("List lector is empty!!!");
+			System.err.println("List lector is empty!!!");
 		System.out.println();
 	}
 
@@ -68,16 +68,33 @@ public class ListLector implements Serializable {
 				count++;
 		}
 		if (count == 0)
-			System.out.println("This ID is not exist!!!");
+			System.err.println("This ID is not exist!!!");
 		else
 			System.out.println("Remove done!!");
 		this.list = updateListLectors;
 		System.out.println();
 	}
 
+	public void removeByEmail(String email) {
+		int count = 0;
+		List<Lector> updateLectors = new ArrayList<>();
+		for (Lector lector : list) {
+			if (!lector.getEmail().equals(email)) {
+				updateLectors.add(lector);
+			} else
+				count++;
+		}
+		if (count == 0)
+			System.err.println("This email is not exist!!!");
+		else
+			System.out.println("Remove done!!");
+		this.list = updateLectors;
+		System.out.println();
+	}
+
 	public boolean findByID(Lector lID) {
 		for (Lector lector : list) {
-			if (lector.getID().equals(lector.getID())) {
+			if (lector.getID().equals(lID.getID())) {
 				lector.showInfo();
 				return true;
 			}
@@ -94,6 +111,38 @@ public class ListLector implements Serializable {
 			}
 		}
 		return (count == 0) ? false : true;
+	}
+
+	public boolean findByEmail(String email) {
+		int count = 0;
+		for (Lector lector : list) {
+			if (lector.getEmail().equals(email)) {
+				count++;
+				lector.showInfo();
+			}
+		}
+		return (count == 0) ? false : true;
+	}
+
+	public boolean findBySubject(String subject) {
+		int count = 0;
+		for (Lector lector : list) {
+			if (lector.getSubject().equals(subject)) {
+				count++;
+				lector.showInfo();
+			}
+		}
+		return (count == 0) ? false : true;
+	}
+	
+	public boolean edit(String id, String phoneNew) {
+		for (Lector lector : list) {
+			if (lector.getID().equals(id))	{
+				lector.setPhoneNum(phoneNew);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void sortByName() {

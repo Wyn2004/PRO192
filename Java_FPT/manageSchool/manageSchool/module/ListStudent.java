@@ -67,12 +67,30 @@ public class ListStudent implements Serializable {
 				count++;
 		}
 		if (count == 0)
-			System.out.println("This ID is not exist!!!");
+			System.err.println("This ID is not exist!!!");
 		else
 			System.out.println("Remove done!!");
 		this.list = updateListStudent;
 		System.out.println();
 	}
+	
+	public void removeByEmail(String email) {
+		int count = 0;
+		List<Student> updateListStudent = new ArrayList<>();
+		for (Student student : list) {
+			if (!student.getEmail().equals(email)) {
+				updateListStudent.add(student);
+			} else
+				count++;
+		}
+		if (count == 0)
+			System.err.println("This email is not exist!!!");
+		else
+			System.out.println("Remove done!!");
+		this.list = updateListStudent;
+		System.out.println();
+	}
+
 
 	public boolean findByID(Student stdID) {
 		for (Student student : list) {
@@ -94,6 +112,28 @@ public class ListStudent implements Serializable {
 		}
 		return (count == 0) ? false : true;
 	}
+	
+	public boolean findByEmail(String email) {
+		int count = 0;
+		for (Student student : list) {
+			if (student.getEmail().equals(email)) {
+				count++;
+				student.showInfo();
+			}
+		}
+		return (count == 0) ? false : true;
+	}
+	
+	public boolean findByMajor(String major) {
+		int count = 0;
+		for (Student student : list) {
+			if (student.getMajor().equals(major)) {
+				count++;
+				student.showInfo();
+			}
+		}
+		return (count == 0) ? false : true;
+	}
 
 	public void printScholarShip() {
 		int count = 0;
@@ -104,6 +144,16 @@ public class ListStudent implements Serializable {
 			}
 		}
 		System.out.println("Have " + count + " student have scholarship.");
+	}
+	
+	public boolean edit(String id, String phoneNew) {
+		for (Student student : list) {
+			if (student.getID().equals(id))	{
+				student.setPhoneNum(phoneNew);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void sortByName() {

@@ -51,7 +51,32 @@ public class MenuStudents extends Menu {
 				break;
 			}
 			case 5: {
-				//// Edit
+				int edit = 0;
+				if (listStudent.isEmpty())
+					System.err.println(" List is empty!!!");
+				else
+					do {
+						listStudent.printListStudents();
+						System.err.println("You just only edit phone number!!!");
+						System.out.println("1. Edit.");
+						System.out.println("0. Exit.");
+						edit = validator.inputInt("Enter your choice: ", 0, 1);
+						if (edit == 1) {
+							String ID = validator.inputID("Enter ID student you want edit: ");
+							Student studentEdit = new Student(ID);
+							if (listStudent.findByID(studentEdit)) {
+
+								String phoneNew = validator.inputPhoneNum("Enter new phone number: ");
+								if (listStudent.edit(ID, phoneNew))
+									System.out.println("Done!!!");
+								System.out.println();
+							} else {
+								System.err.println("Student with ID: " + studentEdit.getID() + " isn't exist!!!");
+								System.out.println();
+							}
+						}
+					} while (edit != 0);
+				System.out.println();
 				break;
 			}
 			case 6: {
@@ -65,7 +90,9 @@ public class MenuStudents extends Menu {
 				break;
 			}
 			case 8: {
-				//////// Remove by email
+				String email = validator.inputEmail("Enter your email you want remove: ");
+				listStudent.removeByEmail(email);
+				System.out.println();
 				break;
 			}
 			case 9: {
@@ -83,11 +110,17 @@ public class MenuStudents extends Menu {
 				break;
 			}
 			case 11: {
-				////// find by email
+				String email = validator.inputEmail("Enter email you want search: ");
+				if (!listStudent.findByEmail(email))
+					System.err.println("Student with email " + email + " isn't exist!!!");
+				System.out.println();
 				break;
 			}
 			case 12: {
-				////// Find by major
+				String major = validator.inputString("Enter major you want search: ");
+				if (!listStudent.findByMajor(major))
+					System.err.println("Student with major " + major + " isn't exist!!!");
+				System.out.println();
 			}
 			case 13: {
 				listStudent.printScholarShip();

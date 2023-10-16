@@ -17,9 +17,9 @@ import module.School;
 public class MainMenu extends Menu implements IFileInfor {
 
 	private static School school = new School();
-	//
+	
 	private ListStudent listStudent = new ListStudent();
-	///
+	
 	private ListLector listLector = new ListLector();
 
 	public MainMenu() {

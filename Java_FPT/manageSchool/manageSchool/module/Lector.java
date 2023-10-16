@@ -22,8 +22,9 @@ public class Lector extends Person implements Serializable {
 		this.ID = ID;
 	}
 
-	public Lector(String name, String gender, Day birthDay, String adress, String ID, String email, String subject) {
-		super(name, gender, birthDay, adress);
+	public Lector(String name, String gender, Day birthDay, String adress, String phoneNum, String ID, String email,
+			String subject) {
+		super(name, gender, birthDay, adress, phoneNum);
 		this.ID = ID;
 		this.email = email;
 		this.subject = subject;
@@ -77,7 +78,7 @@ public class Lector extends Person implements Serializable {
 		return false;
 	}
 
-	public String getMajor() {
+	public String getSubject() {
 		return subject;
 	}
 

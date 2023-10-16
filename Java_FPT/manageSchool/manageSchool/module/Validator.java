@@ -65,4 +65,23 @@ public class Validator {
 		return student.getID();
 	}
 
+	public String inputEmail(String notification) {
+		System.out.print(notification);
+		Student student = new Student();
+		while (!student.setEmail(sc.nextLine().trim()))
+			;
+		return student.getEmail();
+	}
+	
+	public String inputPhoneNum(String notification) {
+		System.out.print(notification);
+		while (true) {
+			String phone = sc.nextLine().trim();
+			if (phone == null || phone.length() <10 || !phone.matches("[0-9]+")) {
+				System.err.print("Error: Invalid phone number, please try again: ");
+				continue;
+			}
+			return phone;
+		}
+	}
 }

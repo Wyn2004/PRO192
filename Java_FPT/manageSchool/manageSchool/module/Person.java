@@ -15,16 +15,19 @@ public class Person implements Serializable {
 	private Day birthDay = new Day();
 	@Expose
 	private String adress;
+	@Expose
+	private String phoneNum;
 
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person(String name, String gender, Day birthDay, String adress) {
+	public Person(String name, String gender, Day birthDay, String adress,String phoneNum) {
 		this.name = name;
 		this.gender = gender;
 		this.birthDay = birthDay;
 		this.adress = adress;
+		this.phoneNum= phoneNum;
 	}
 
 	public void inputInfo() {
@@ -41,6 +44,9 @@ public class Person implements Serializable {
 		birthDay.inputBirth();
 		System.out.print("Enter adress: ");
 		while (!setAdress(scanner.nextLine().trim()))
+			;
+		System.out.print("Enter phone number: ");
+		while (!setPhoneNum(scanner.nextLine().trim()))
 			;
 
 	}
@@ -99,8 +105,24 @@ public class Person implements Serializable {
 		}
 	}
 
-	public String toStringPerson() {
-		return "Person: [name=" + name + ", gender=" + gender + ", birthDay=" + birthDay + ", adress=" + adress + "]";
+	public String getPhoneNum() {
+		return phoneNum;
 	}
+
+	public boolean setPhoneNum(String phoneNum) {
+		if (phoneNum != null && phoneNum.length() >=10 && phoneNum.matches("[0-9]+")) {
+			this.phoneNum = phoneNum;
+			return true;
+		} else {
+			System.err.print("Error... Invalid input please try again:");
+			return false;
+		}	}
+
+	public String toStringPerson() {
+		return "Person [name=" + name + ", gender=" + gender + ", birthDay=" + birthDay + ", adress=" + adress
+				+ ", phoneNum=" + phoneNum + "]";
+	}
+
+
 
 }

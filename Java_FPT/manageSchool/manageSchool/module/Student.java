@@ -25,9 +25,9 @@ public class Student extends Person implements Serializable {
 		this.ID = ID;
 	}
 
-	public Student(String name, String gender, Day birthDay, String adress, String ID, double average, String email,
-			String major) {
-		super(name, gender, birthDay, adress);
+	public Student(String name, String gender, Day birthDay, String adress, String phoneNum, String ID, double average,
+			String email, String major) {
+		super(name, gender, birthDay, adress, phoneNum);
 		this.ID = ID;
 		this.average = average;
 		this.email = email;
