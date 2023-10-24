@@ -1,8 +1,5 @@
 package View;
 
-import java.util.List;
-
-import Module.Brand;
 import Module.Validator;
 
 public abstract class Menu {

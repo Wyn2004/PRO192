@@ -1,6 +1,7 @@
 package Module;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import View.MenuBrand;
@@ -29,14 +30,6 @@ public class CarList {
 
 	public void setBrandList(BrandList brandList) {
 		this.brandList = brandList;
-	}
-
-	public void displayListCar() {
-		if (!carList.isEmpty())
-			for (Car car : carList)
-				System.out.println(car.toString());
-		else
-			System.err.println("List car is empty!!!");
 	}
 
 	public void addCar() {
@@ -69,7 +62,7 @@ public class CarList {
 		} else
 			System.err.println("List car is empty!!!");
 	}
-	
+
 	public void updateCar() {
 
 		String ID = validator.inputString("Enter ID of car want update: ");
@@ -81,15 +74,25 @@ public class CarList {
 			addCar();
 		}
 	}
-	
-	public void printBasedBrandName(String brandName)	{
-		
+
+	public void printBasedBrandName(String brandName) {
+
 		int count = 0;
-		for (Car car : carList) 
-			if (car.getBrand().getBrandName().contains(brandName))	{
+		for (Car car : carList)
+			if (car.getBrand().getBrandName().contains(brandName)) {
 				count++;
-				System.out.println(car.toScreenString()+"\n");
+				System.out.println(car.toScreenString() + "\n");
 			}
-		if (count == 0) System.err.println("No car is detected!!!"); 
+		if (count == 0)
+			System.err.println("No car is detected!!!");
+	}
+
+	public void displayListCar() {
+		if (!carList.isEmpty()) {
+			Collections.sort(carList);
+			for (Car car : carList)
+			System.out.println(car.toScreenString());
+		} else
+			System.err.println("List car is empty!!!");
 	}
 }

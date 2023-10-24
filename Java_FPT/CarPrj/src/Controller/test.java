@@ -13,6 +13,5 @@ public class test {
 				"Save cars to file, named cars.txt.", "Exit."};
 		Menu mainMenu = new MainMenu("Magenement Car.",options);
 		mainMenu.execute();
-
 	}
 }

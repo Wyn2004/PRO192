@@ -33,7 +33,6 @@ public class MainMenu extends Menu implements IFileInfo {
 			readFileBrand();
 			readFileCar();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		do {
@@ -79,7 +78,11 @@ public class MainMenu extends Menu implements IFileInfo {
 				break;
 			}
 			case 6: {
-				//////////////////
+				if (!carList.getCarList().isEmpty())
+					carList.displayListCar();
+				else
+					System.err.println("List car is empty!!!");
+				System.out.println();
 				break;
 			}
 			case 7: {
@@ -154,7 +157,7 @@ public class MainMenu extends Menu implements IFileInfo {
 	@Override
 	public void writeFileBrand() throws IOException {
 		try {
-			FileOutputStream fos = new FileOutputStream("BrandsData.txt");
+			FileOutputStream fos = new FileOutputStream("Brands.txt");
 			for (Brand brand : brandList.getBrandList())
 				fos.write((brand.toString() + "\n").getBytes());
 			System.out.println("Export data brands done!!!");
@@ -193,9 +196,9 @@ public class MainMenu extends Menu implements IFileInfo {
 
 	@Override
 	public void writeFileCar() throws IOException {
-		FileOutputStream fos = new FileOutputStream("CarsData.txt");
+		FileOutputStream fos = new FileOutputStream("Cars.txt");
 		for (Car car : carList.getCarList())
-			fos.write(car.toString().getBytes());
+			fos.write((car.toString()+"\n").getBytes());
 		System.out.println("Export data cars done!!!");
 		fos.close();
 	}
