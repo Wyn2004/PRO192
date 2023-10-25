@@ -52,7 +52,7 @@ public class Brand {
 	}
 
 	public String toString() {
-		return brandId + ", " + brandName + ", " + soundBrand + ", " + price;
+		return brandId + ", " + brandName + ", " + soundBrand + ": " + price;
 	}
 
 }

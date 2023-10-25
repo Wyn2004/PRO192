@@ -29,6 +29,16 @@ public class BrandList {
 		brand.setPrice(validator.inputDouble("Enter price brand: ", 0, Double.MAX_VALUE));
 		brandList.add(brand);
 	}
+	
+	public void updateInfoBrand(String ID) {
+
+		Brand brand = new Brand();
+		brand.setBrandId(ID);
+		brand.setBrandName(validator.inputNameBrand("Enter brand name: ", brandList));
+		brand.setSoundBrand(validator.inputSoundBrand("Enter sound brand: ", brandList));
+		brand.setPrice(validator.inputDouble("Enter price brand: ", 0, Double.MAX_VALUE));
+		brandList.add(brand);
+	}
 
 	public void displayListBrand() {
 
@@ -59,7 +69,7 @@ public class BrandList {
 			System.err.println("ID brand is not exist!!!");
 		else {
 			brandList.remove(index);
-			addBrand();
+			updateInfoBrand(ID);
 		}
 	}
 
