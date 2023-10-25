@@ -141,7 +141,7 @@ public class Validator {
 					break;
 				}
 			if (result == null || result.length() == 0 || 
-				result.length()>6 || !result.startsWith("F") || !check) {
+				result.length()<6 || !result.startsWith("F") || !check) {
 				System.err.print("Error: Invalid input, please try again: ");
 				continue;
 			}
@@ -160,7 +160,7 @@ public class Validator {
 					break;
 				}
 			if (result == null || result.length() == 0 || 
-				result.length()>6 || !result.startsWith("E") || !check) {
+				result.length()<6 || !result.startsWith("E") || !check) {
 				System.err.print("Error: Invalid input, please try again: ");
 				continue;
 			}

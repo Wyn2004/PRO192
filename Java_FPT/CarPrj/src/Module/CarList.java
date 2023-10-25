@@ -43,6 +43,18 @@ public class CarList {
 		car.setEngineID(validator.inputEngineID("Enter engineer ID: ", carList));
 		carList.add(car);
 	}
+	
+	public void updateInfoCar(String ID) {
+
+		Car car = new Car();
+		car.setCarID(ID);
+		MenuBrand menuBrand = new MenuBrand("Menu Brand Car.", brandList.getOption(), brandList);
+		car.setBrand(menuBrand.getChoice());
+		car.setColor(validator.inputString("Enter color: "));
+		car.setFrameID(validator.inputFrameID("Enter frame ID: ", carList));
+		car.setEngineID(validator.inputEngineID("Enter engineer ID: ", carList));
+		carList.add(car);
+	}
 
 	public int searchID(String oID) {
 		for (int i = 0; i < carList.size(); i++)
@@ -71,7 +83,7 @@ public class CarList {
 			System.err.println("ID car is not exist!!!");
 		else {
 			carList.remove(index);
-			addCar();
+			updateInfoCar(ID);
 		}
 	}
 
