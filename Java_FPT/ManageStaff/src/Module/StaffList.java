@@ -58,7 +58,7 @@ public class StaffList {
 			int count = 0;
 			for (Staff staff : listStaff) {
 				String fullName = staff.getFullName();
-				String subName = fullName.substring(fullName.lastIndexOf(" ")+1);
+				String subName = fullName.substring(fullName.lastIndexOf(" ") + 1);
 				if (subName.equals(name)) {
 					System.out.println(staff.toString());
 					count++;
@@ -101,16 +101,18 @@ public class StaffList {
 
 	public boolean login(String ID, String password) {
 
-		Staff staffUser = searchByID(ID);
-		if (staffUser.getPassword().equals(password))
-			return true;
-		else
+		if (searchByID(ID) != null) {
+			Staff staffUser = searchByID(ID);
+			if (staffUser.getPassword().equals(password))
+				return true;
+			return false;
+		} else
 			return false;
 	}
 
 	public void displayListStaff() {
 		if (!this.listStaff.isEmpty()) {
-			for (Staff staff : listStaff) 
+			for (Staff staff : listStaff)
 				System.out.println(staff.toString());
 			System.out.println("Total " + listStaff.size() + " staff in list.");
 
