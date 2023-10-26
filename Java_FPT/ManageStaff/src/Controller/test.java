@@ -1,13 +1,13 @@
 package Controller;
 
-import View.MainMenu;
+import View.StaffManagement;
 import View.Menu;
 
 public class test {
 	public static void main(String[] args) {
-		
-		String[] options = {"Option 1.", "Option 2.","Save File", "Read File", "Exit."};
-		Menu mainMenu = new MainMenu("Magenement ....",options);
+
+		String[] options = { "Display all staff", "Search staff", "Login", "Change password", "Exit." };
+		Menu mainMenu = new StaffManagement("Staff Management", options);
 		mainMenu.execute();
 
 	}
