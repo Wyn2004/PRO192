@@ -22,6 +22,10 @@ public class MainMenu extends Menu implements IFileInfo{
 			choice = displayMenu();
 			System.out.println();
 			switch (choice) {
+			case 0: {
+				System.out.println("Good bye!!!!");
+				break;
+			}
 			case 1: {
 				String[] Options_1 = { "Options ....", "Back." };
 				//// Execute 1
@@ -53,12 +57,8 @@ public class MainMenu extends Menu implements IFileInfo{
 				}
 				break;
 			}
-			case 5: {
-				System.out.println("Good bye!!!!");
-				break;
 			}
-			}
-		} while (choice != 5);
+		} while (choice != 0);
 	}
 
 	@Override

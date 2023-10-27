@@ -1,0 +1,6 @@
+QE180123, Trinh, Thang, 9/5/2004, male
+AI192454, Nguyen, Thang, 4/8/2004, male
+QE180002, Nguyen, Toan, 3/2/2003, female
+AI112233, Nguyen, Viet, 13/10/2003, male
+QE180016, Nguyen, Phuc, 31/1/2004, female
+QE180003, Le, Dung, 23/7/2004, female

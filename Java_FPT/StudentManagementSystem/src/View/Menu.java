@@ -1,11 +1,13 @@
 package View;
 
+import Controller.StudentList;
 import Module.Validator;
 
 public abstract class Menu {
 
 	private String menuName;
 	private String[] options;
+	private StudentList studentList = new StudentList();
 	private Validator validator = new Validator();
 
 	public Menu() {
@@ -18,6 +20,10 @@ public abstract class Menu {
 		this.options = options;
 
 	}
+	
+	public StudentList getStudentList() {
+		return this.studentList;
+	}
 
 	public int displayMenu() {
 
@@ -26,7 +32,7 @@ public abstract class Menu {
 		for (int i = 0; i < options.length; i++)
 			System.out.println((i + 1) + ". " + options[i]);
 		System.out.println("-------------------------------------------");
-		return validator.inputInt("Enter selection: ", 0, options.length);
+		return validator.inputInt("Enter selection: ", 1, options.length);
 	}
 
 	public abstract void execute();
