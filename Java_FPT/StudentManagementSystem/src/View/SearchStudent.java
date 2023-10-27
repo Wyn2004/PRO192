@@ -1,6 +1,6 @@
 package View;
 
-import Controller.StudentList;
+import Module.StudentList;
 import Module.Validator;
 
 public class SearchStudent extends Menu {
@@ -50,7 +50,7 @@ public class SearchStudent extends Menu {
 			}
 			case 4: {
 				if (!studentList.getList().isEmpty()) {
-					String gender = validator.inputString("Enter gender you want search: ");
+					String gender = validator.inputString("Enter gender (male/female) you want search: ");
 					studentList.searchGender(gender);
 				} else
 					System.err.println("List student is empty!!!");

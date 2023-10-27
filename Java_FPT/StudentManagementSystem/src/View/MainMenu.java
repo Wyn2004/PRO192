@@ -1,6 +1,6 @@
 package View;
 
-import Controller.StudentList;
+import Module.StudentList;
 
 public class MainMenu extends Menu {
 
@@ -39,6 +39,7 @@ public class MainMenu extends Menu {
 			}
 			case 3: {
 				studentList.displayListStudent();
+				System.out.println();
 				break;
 			}
 			case 4: {

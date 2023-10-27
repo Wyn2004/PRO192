@@ -1,4 +1,4 @@
-package Controller;
+package Module;
 
 public class Student implements Comparable<Student>{
 

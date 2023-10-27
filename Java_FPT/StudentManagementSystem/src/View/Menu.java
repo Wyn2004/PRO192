@@ -1,6 +1,6 @@
 package View;
 
-import Controller.StudentList;
+import Module.StudentList;
 import Module.Validator;
 
 public abstract class Menu {

@@ -1,4 +1,4 @@
-package Controller;
+package Module;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import Module.Validator;
 
 public class StudentList {
 
@@ -62,10 +60,10 @@ public class StudentList {
 	public void add() {
 
 		String ID = this.validator.inputString("Enter ID student: ").toUpperCase();
-		String firstName = this.validator.inputString("Enter firse name: ");
+		String firstName = this.validator.inputString("Enter first name: ");
 		String lastName = this.validator.inputString("Enter last name: ");
-		String dob = this.validator.inputString("Enter date of birth: ");
-		String gender = this.validator.inputString("Enter gender: ");
+		String dob = this.validator.inputString("Enter date of birth (dd/MM/yyyy): ");
+		String gender = this.validator.inputString("Enter gender (male/female): ");
 
 		Student newStudent = new Student(ID, firstName, lastName, dob, gender);
 		this.listStudent.add(newStudent);
