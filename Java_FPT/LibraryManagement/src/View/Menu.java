@@ -7,7 +7,6 @@ public abstract class Menu {
 
 	private String menuName;
 	private String[] options;
-	private Validator validator = new Validator();
 	private Library library = new Library();
 
 	public Menu() {
@@ -32,7 +31,7 @@ public abstract class Menu {
 		for (int i = 0; i < options.length; i++)
 			System.out.println((i + 1) + ". " + options[i]);
 		System.out.println("-------------------------------------------");
-		return validator.inputInt("Enter selection: ", 1, options.length);
+		return Validator.inputInt("Enter selection: ", 1, options.length);
 	}
 
 	public abstract void execute();

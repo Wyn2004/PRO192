@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class StudentList {
 
 	private List<Student> listStudent = new ArrayList<>();
-	private Validator validator = new Validator();
 
 	public StudentList(List<Student> list) {
 		this.listStudent = list;
@@ -21,7 +21,6 @@ public class StudentList {
 		try {
 			loadData();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -45,7 +44,7 @@ public class StudentList {
 				String studentID = tokens[0].trim();
 				String firstName = tokens[1].trim();
 				String lastName = tokens[2].trim();
-				Date dob = validator.parseDate(tokens[3].trim());
+				Date dob = Validator.parseDate(tokens[3].trim());
 				String gender = tokens[4].trim();
 
 				Student student = new Student(studentID, firstName, lastName, dob, gender);
@@ -59,79 +58,34 @@ public class StudentList {
 
 	public void add() {
 
-		String ID = this.validator.inputString("Enter ID student: ").toUpperCase();
-		String firstName = this.validator.inputString("Enter first name: ");
-		String lastName = this.validator.inputString("Enter last name: ");
-		Date dob = this.validator.inputDate("Enter date of birth (dd/MM/yyyy): ");
-		String gender = this.validator.inputString("Enter gender (male/female): ");
+		String ID = Validator.inputString("Enter ID student: ").toUpperCase();
+		String firstName = Validator.inputString("Enter first name: ");
+		String lastName = Validator.inputString("Enter last name: ");
+		Date dob = Validator.inputDate("Enter date of birth (dd/MM/yyyy): ");
+		String gender = Validator.inputString("Enter gender (male/female): ");
 
 		Student newStudent = new Student(ID, firstName, lastName, dob, gender);
 		this.listStudent.add(newStudent);
 		Collections.sort(listStudent);
 	}
 
-	public void displayListStudent() {
+	public void displayListStudent(List<Student> list) {
 		if (!this.listStudent.isEmpty()) {
-			for (Student student : listStudent) {
+			for (Student student : list) {
 				System.out.println(student.toString());
 			}
-			System.out.println("Total " + listStudent.size() + " student in list.");
+			System.out.println("Total " + list.size() + " student in list.");
 		} else
 			System.err.println("List student is empty!!!");
 	}
 
-	public void searchID(String ID) {
-		if (!this.listStudent.isEmpty()) {
-			for (Student student : listStudent)
-				if (student.getStudentID().equalsIgnoreCase(ID)) {
-					System.out.println(student.toString());
-					return;
-				}
-			System.err.println("Student with this ID does not exist!!!");
-		} else
-			System.err.println("List student is empty!!!");
-	}
-	
-	public void searchLastName(String lastName) {
-		if (!this.listStudent.isEmpty()) {
-			int count = 0;
-			for (Student student : listStudent) {
-				if (student.getLastName().equalsIgnoreCase(lastName))	{
-					count++;
-					System.out.println(student.toString());
-				}
-			}
-			System.out.println("Totol "+count+" student with this last name in list.");
-		} else
-			System.err.println("List student is empty!!!");
-	}
-	
-	public void searchDOB(Date DOB) {
-		if (!this.listStudent.isEmpty()) {
-			int count = 0;
-			for (Student student : listStudent) {
-				if (student.getDob().equals(DOB))	{
-					count++;
-					System.out.println(student.toString());
-				}
-			}
-			System.out.println("Totol "+count+" student with this date of birth in list.");
-		} else
-			System.err.println("List student is empty!!!");
-	}
-	
-	public void searchGender(String gender) {
-		if (!this.listStudent.isEmpty()) {
-			int count = 0;
-			for (Student student : listStudent) {
-				if (student.getGender().equalsIgnoreCase(gender))	{
-					count++;
-					System.out.println(student.toString());
-				}
-			}
-			System.out.println("Totol "+count+" student with this gender in list.");
-
-		} else
-			System.err.println("List student is empty!!!");
+	public void seachStudent(Predicate<Student> p)	{
+        List<Student> findStudents = new ArrayList<>();
+        for (Student student : listStudent) {
+            if (p.test(student)) {
+                findStudents.add(student);
+            }
+        }
+        displayListStudent(findStudents);
 	}
 }

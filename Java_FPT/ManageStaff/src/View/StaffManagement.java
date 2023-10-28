@@ -6,8 +6,6 @@ import Module.Validator;
 
 public class StaffManagement extends Menu {
 
-	private Validator validator = new Validator();
-
 	public StaffManagement() {
 	}
 
@@ -30,22 +28,59 @@ public class StaffManagement extends Menu {
 				break;
 			}
 			case 1: {
-				staffList.displayListStaff();
+				staffList.displayListStaff(staffList.getListStaff());
 				System.out.println();
 				break;
 			}
 			case 2: {
-				String optionSearch[] = { "Search by name", "SearchStaff by department", "Search by ID", "Back" };
-				SearchStaff searchStaff = new SearchStaff("Search Staff ", optionSearch);
-				searchStaff.execute();
+				if (!staffList.getListStaff().isEmpty()) {
+					String optionSearch[] = { "Search by name", "SearchStaff by department", "Search by ID", "Back" };
+					Menu menuSearch = new Menu("Searching Staff", optionSearch) {
+
+						@Override
+						public void execute() {
+							int choice;
+							StaffList staffList = super.getStaffList();
+							do {
+								choice = displayMenu();
+								System.out.println();
+								switch (choice) {
+								case 0: {
+									System.out.println("Back to management staff!!!!");
+									break;
+								}
+								case 1: {
+									String name = Validator.inputString("Enter name: ");
+									staffList.searchStaff(p -> (p.getFullName().contains(name)));
+									System.out.println();
+									break;
+								}
+								case 2: {
+									String department = Validator.inputString("Enter department: ");
+									staffList.searchStaff(p -> (p.getDepartment().equals(department)));
+									break;
+
+								}
+								case 3: {
+									String id = Validator.inputString("Enter ID: ");
+									staffList.searchStaff(p -> (p.getStaffID().equalsIgnoreCase(id)));
+									break;
+								}
+								}
+							} while (choice != 0);
+						}
+					};
+					menuSearch.execute();
+				} else
+					System.err.println("List staff is empty!!");
 				System.out.println();
 				break;
 
 			}
 			case 3: {
 				if (!staffList.getListStaff().isEmpty()) {
-					String ID = validator.inputString("Enter staff ID: ");
-					String password = validator.inputString("Enter password: ");
+					String ID = Validator.inputString("Enter staff ID: ").toUpperCase();
+					String password = Validator.inputString("Enter password: ");
 					if (staffList.login(ID, password)) {
 						System.out.println("Login successfully!!!");
 						loginID = ID;
@@ -58,8 +93,8 @@ public class StaffManagement extends Menu {
 			}
 			case 4: {
 				if (loginID != "") {
-					String oldPassword = validator.inputString("Enter old password: ");
-					String newPassWord = validator.inputString("Enter new password: ");
+					String oldPassword = Validator.inputString("Enter old password: ");
+					String newPassWord = Validator.inputString("Enter new password: ");
 					Staff changePassStaff = staffList.searchByID(loginID);
 					changePassStaff.changePassword(oldPassword, newPassWord);
 				} else

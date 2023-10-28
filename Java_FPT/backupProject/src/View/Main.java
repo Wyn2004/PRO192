@@ -1,7 +1,4 @@
-package Controller;
-
-import View.MainMenu;
-import View.Menu;
+package View;
 
 public class Main {
 	public static void main(String[] args) {

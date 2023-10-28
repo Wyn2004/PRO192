@@ -13,7 +13,7 @@ public class Validator {
 	public Validator() {
 	}
 
-	public String inputString(String notification) {
+	public static String inputString(String notification) {
 		System.out.print(notification);
 		while (true) {
 			String result = sc.nextLine().trim();
@@ -25,7 +25,7 @@ public class Validator {
 		}
 	}
 
-	public int inputInt(String notification, int min, int max) {
+	public static int inputInt(String notification, int min, int max) {
 		System.out.print(notification);
 		int number = 0;
 		while (true) {
@@ -43,7 +43,7 @@ public class Validator {
 		}
 	}
 
-	public double inputDouble(String notification, double min, double max) {
+	public static double inputDouble(String notification, double min, double max) {
 		System.out.print(notification);
 		double number = 0;
 		while (true) {
@@ -61,7 +61,7 @@ public class Validator {
 		}
 	}
 
-	public Date inputDate(String notification) {
+	public static Date inputDate(String notification) {
 		System.out.println(notification);
 		while (true) {
 			String result = sc.nextLine().trim();

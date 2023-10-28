@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Library {
 
 	private List<Book> listBook = new ArrayList<>();
-	private Validator validator = new Validator();
 
 	public Library(List<Book> listBook) {
 
@@ -46,7 +46,7 @@ public class Library {
 				String bookID = tokens[0].trim();
 				String bookTitile = tokens[1].trim();
 				String author = tokens[2].trim();
-				Date dob = validator.parseDate(tokens[3].trim());
+				Date dob = Validator.parseDate(tokens[3].trim());
 				Book book = new Book(bookID, bookTitile, author, dob);
 				this.listBook.add(book);
 				Collections.sort(this.listBook);
@@ -71,59 +71,23 @@ public class Library {
 	}
 
 	public void add() {
-		String bookID = validator.inputString("Enter book ID: ").toUpperCase();
-		String bookTitle = validator.inputString("Enter book title: ");
-		String autthor = validator.inputString("Enter author: ");
-		Date datePublic = validator.inputDate("Enter date public: ");
+		String bookID = Validator.inputString("Enter book ID: ").toUpperCase();
+		String bookTitle = Validator.inputString("Enter book title: ");
+		String autthor = Validator.inputString("Enter author: ");
+		Date datePublic = Validator.inputDate("Enter date public: ");
 		Book newBook = new Book(bookID, bookTitle, autthor, datePublic);
 		this.listBook.add(newBook);
 		Collections.sort(this.listBook);
 		System.out.println("Donee !!!");
 	}
 
-	public void searchByID(String ID) {
-		if (!listBook.isEmpty()) {
-			List<Book> books = new ArrayList<>();
-			for (Book book : listBook)
-				if (book.getBookID().equalsIgnoreCase(ID))
-					books.add(book);
-			displayLibrary(books);
-		} else
-			System.err.println("List book is empty!!!");
+	public void searchBook(Predicate<Book> p) {
+		List<Book> bookSearch = new ArrayList<>();
+		for (Book book : listBook)	{
+			if (p.test(book))
+				bookSearch.add(book);
+		}
+		displayLibrary(bookSearch);
 	}
 
-	public void searchByTitle(String title) {
-		if (!listBook.isEmpty()) {
-			List<Book> books = new ArrayList<>();
-			for (Book book : listBook)
-				if (book.getBookTitle().contains(title))
-					books.add(book);
-			displayLibrary(books);
-		} else
-			System.err.println("List book is empty!!!");
-	}
-
-	public void searchByAuthor(String author) {
-		if (!listBook.isEmpty()) {
-			List<Book> books = new ArrayList<>();
-			for (Book book : listBook)
-				if (book.getAuthor().contains(author))
-					books.add(book);
-			displayLibrary(books);
-		} else
-			System.err.println("List book is empty!!!");
-	}
-
-	public void searchByDatePublic(int year) {
-		if (!listBook.isEmpty()) {
-			List<Book> books = new ArrayList<>();
-			for (Book book : listBook) {
-				int yearPublic = book.getDatePublic().getYear()+1900;
-				if (yearPublic == year)
-					books.add(book);
-			}
-			displayLibrary(books);
-		} else
-			System.err.println("List book is empty!!!");
-	}
 }

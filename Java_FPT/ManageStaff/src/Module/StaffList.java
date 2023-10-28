@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class StaffList {
 
@@ -52,40 +53,6 @@ public class StaffList {
 		}
 	}
 
-	public void searchByName(String name) {
-
-		if (!this.listStaff.isEmpty()) {
-			int count = 0;
-			for (Staff staff : listStaff) {
-				String fullName = staff.getFullName();
-				String subName = fullName.substring(fullName.lastIndexOf(" ") + 1);
-				if (subName.equals(name)) {
-					System.out.println(staff.toString());
-					count++;
-				}
-			}
-			System.out.println("Have " + count + " staff with this name.");
-		} else {
-			System.err.println("List staff is empty!!");
-		}
-	}
-
-	public void searchByDepartment(String department) {
-
-		if (!this.listStaff.isEmpty()) {
-			int count = 0;
-			for (Staff staff : listStaff) {
-				if (staff.getDepartment().equals(department)) {
-					System.out.println(staff.toString());
-					count++;
-				}
-			}
-			System.out.println("Have " + count + " staff with this department.");
-		} else {
-			System.err.println("List staff is empty!!");
-		}
-	}
-
 	public Staff searchByID(String ID) {
 
 		if (!this.listStaff.isEmpty()) {
@@ -99,6 +66,16 @@ public class StaffList {
 		}
 	}
 
+	public void searchStaff(Predicate<Staff> p) {
+		List<Staff> findStaffs = new ArrayList<>();
+		for (Staff staff : listStaff) {
+			if (p.test(staff)) {
+				findStaffs.add(staff);
+			}
+		}
+		displayListStaff(findStaffs);
+	}
+
 	public boolean login(String ID, String password) {
 
 		if (searchByID(ID) != null) {
@@ -110,11 +87,11 @@ public class StaffList {
 			return false;
 	}
 
-	public void displayListStaff() {
+	public void displayListStaff(List<Staff> list) {
 		if (!this.listStaff.isEmpty()) {
-			for (Staff staff : listStaff)
+			for (Staff staff : list)
 				System.out.println(staff.toString());
-			System.out.println("Total " + listStaff.size() + " staff in list.");
+			System.out.println("Total " + list.size() + " staff in list.");
 
 		} else {
 			System.err.println("List staff is empty!!");
