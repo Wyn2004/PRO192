@@ -23,11 +23,10 @@ public abstract class Menu {
 
 		System.out.println(menuName);
 		System.out.println("-------------------------------------------");
-		for (int i = 0; i < options.length - 1; i++)
+		for (int i = 0; i < options.length; i++)
 			System.out.println((i + 1) + ". " + options[i]);
-		System.out.println("0. " + options[options.length - 1]);
 		System.out.println("-------------------------------------------");
-		return validator.inputInt("Enter your choice: ", 0, options.length - 1);
+		return validator.inputInt("Enter selection: ", 0, options.length);
 	}
 
 	public abstract void execute();

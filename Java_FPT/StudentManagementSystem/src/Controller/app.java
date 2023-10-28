@@ -12,6 +12,7 @@ public class app {
 		
 		Date date = formatter.parse(str);
 		System.out.println(formatter.format(date));
-//		System.out.println(date.equals(LocalDate.parse(str,formatter)));
+
+
 	}
 }

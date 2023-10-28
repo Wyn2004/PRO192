@@ -1,10 +1,14 @@
 package Module;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Validator {
 
 	private final static Scanner sc = new Scanner(System.in);
+	private final static SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
 	public Validator() {
 	}
@@ -54,6 +58,25 @@ public class Validator {
 				continue;
 			}
 			return number;
+		}
+	}
+
+	public Date inputDate(String notification) {
+		System.out.println(notification);
+		while (true) {
+			String result = sc.nextLine().trim();
+			Date date = null;
+			try {
+				date = formatDate.parse(result);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (result == null || result.length() == 0) {
+				System.err.print("Error: Invalid input, please try again: ");
+				continue;
+			}
+			return date;
 		}
 	}
 

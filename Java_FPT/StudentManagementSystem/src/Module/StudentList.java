@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class StudentList {
@@ -45,7 +46,7 @@ public class StudentList {
 				String studentID = tokens[0].trim();
 				String firstName = tokens[1].trim();
 				String lastName = tokens[2].trim();
-				String dob = tokens[3].trim();
+				Date dob = validator.parseDate(tokens[3].trim());
 				String gender = tokens[4].trim();
 
 				Student student = new Student(studentID, firstName, lastName, dob, gender);
@@ -62,7 +63,7 @@ public class StudentList {
 		String ID = this.validator.inputString("Enter ID student: ").toUpperCase();
 		String firstName = this.validator.inputString("Enter first name: ");
 		String lastName = this.validator.inputString("Enter last name: ");
-		String dob = this.validator.inputString("Enter date of birth (dd/MM/yyyy): ");
+		Date dob = this.validator.inputDate("Enter date of birth (dd/MM/yyyy): ");
 		String gender = this.validator.inputString("Enter gender (male/female): ");
 
 		Student newStudent = new Student(ID, firstName, lastName, dob, gender);

@@ -1,14 +1,17 @@
 package Module;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Student implements Comparable<Student>{
 
 	private String studentID;
 	private String firstName;
 	private String lastName;
-	private String dob;
+	private Date dob;
 	private String gender;
 
-	public Student(String studentID, String firstName, String lastName, String dob, String gender) {
+	public Student(String studentID, String firstName, String lastName, Date dob, String gender) {
 		this.studentID = studentID;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,11 +47,11 @@ public class Student implements Comparable<Student>{
 		this.lastName = lastName;
 	}
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
@@ -61,7 +64,8 @@ public class Student implements Comparable<Student>{
 	}
 
 	public String toString() {
-		return studentID + ", " + firstName + ", " + lastName + ", " + dob + ", " + gender;
+		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+		return studentID + ", " + firstName + ", " + lastName + ", " + formatDate.format(dob) + ", " + gender;
 	}
 
 	@Override
