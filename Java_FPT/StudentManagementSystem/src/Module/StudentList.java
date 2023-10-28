@@ -14,7 +14,6 @@ public class StudentList {
 	private Validator validator = new Validator();
 
 	public StudentList(List<Student> list) {
-		super();
 		this.listStudent = list;
 	}
 
@@ -51,8 +50,8 @@ public class StudentList {
 
 				Student student = new Student(studentID, firstName, lastName, dob, gender);
 				this.listStudent.add(student);
+				Collections.sort(listStudent);
 			}
-			Collections.sort(listStudent);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,10 +67,10 @@ public class StudentList {
 
 		Student newStudent = new Student(ID, firstName, lastName, dob, gender);
 		this.listStudent.add(newStudent);
+		Collections.sort(listStudent);
 	}
 
 	public void displayListStudent() {
-
 		if (!this.listStudent.isEmpty()) {
 			for (Student student : listStudent) {
 				System.out.println(student.toString());
@@ -107,7 +106,7 @@ public class StudentList {
 			System.err.println("List student is empty!!!");
 	}
 	
-	public void searchDOB(String DOB) {
+	public void searchDOB(Date DOB) {
 		if (!this.listStudent.isEmpty()) {
 			int count = 0;
 			for (Student student : listStudent) {

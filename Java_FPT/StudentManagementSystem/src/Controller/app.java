@@ -11,7 +11,7 @@ public class app {
 		String str = "39/2/2020";
 		
 		Date date = formatter.parse(str);
-		System.out.println(formatter.format(date));
+		System.out.println(date.getYear()+1900);
 
 
 	}

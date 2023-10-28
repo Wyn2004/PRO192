@@ -64,6 +64,7 @@ public class Validator {
 	
 	public Date inputDate(String notification) {
 		System.out.print(notification);
+		formatDate.setLenient(false);
 		while (true) {
 			String result = sc.nextLine().trim();
 			Date date = null;

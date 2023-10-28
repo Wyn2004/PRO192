@@ -64,6 +64,7 @@ public class Validator {
 	
 	public Date inputDate(String notification) {
 		System.out.print(notification);
+		formatDate.setLenient(false);
 		while (true) {
 			String result = sc.nextLine().trim();
 			Date date = null;
@@ -86,7 +87,6 @@ public class Validator {
 		try {
 			date = formatDate.parse(dateString);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return date;

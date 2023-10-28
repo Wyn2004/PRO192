@@ -1,5 +1,7 @@
 package View;
 
+import java.util.Date;
+
 import Module.StudentList;
 import Module.Validator;
 
@@ -42,7 +44,7 @@ public class SearchStudent extends Menu {
 			}
 			case 3: {
 				if (!studentList.getList().isEmpty()) {
-					String DOB = validator.inputString("Enter date of birth (dd/MM/yyyy) you want search: ");
+					Date DOB = validator.inputDate("Enter date of birth (dd/MM/yyyy) you want search: ");
 					studentList.searchDOB(DOB);
 				} else
 					System.err.println("List student is empty!!!");

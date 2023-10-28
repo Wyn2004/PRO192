@@ -26,7 +26,7 @@ public abstract class Menu {
 		for (int i = 0; i < options.length; i++)
 			System.out.println((i + 1) + ". " + options[i]);
 		System.out.println("-------------------------------------------");
-		return validator.inputInt("Enter selection: ", 0, options.length);
+		return validator.inputInt("Enter selection: ", 1, options.length);
 	}
 
 	public abstract void execute();
