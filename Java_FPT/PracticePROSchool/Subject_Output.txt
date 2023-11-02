@@ -1,0 +1,5 @@
+Subject{ID=S11, name=Mad101, credits=2, professor=VoVanNam}
+Subject{ID=S12, name=OSG104, credits=1, professor=TranKyHan}
+Subject{ID=S13, name=PRO192, credits=3, professor=BaoTrang}
+Subject{ID=S111, name=dd, credits=2, professor=thang}
+Subject{ID=OKE222, name=con, credits=2, professor=cac}

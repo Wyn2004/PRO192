@@ -1,0 +1,3 @@
+Id=S11, Name=Mad101, Credits=2, Professor=VoVanNam
+Id=S12, Name=OSG104, Credits=1, Professor=TranKyHan
+Id=S13, Name=PRO192, Credits=3, Professor=BaoTrang
