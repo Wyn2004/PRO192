@@ -1,0 +1,5 @@
+Vaccine{name=COVID-19, code=1, quantity=500, expirationDae=01/01/2002, price=2.3, lastInjectedDate=05/07/2024}
+Vaccine{name=Gam-COVID-Vac, code=2, quantity=200, expirationDae=15/07/2026, price=1.0, lastInjectedDate=11/02/2022}
+Vaccine{name=SPUTNIK-V, code=6, quantity=700, expirationDae=18/05/2027, price=1.0, lastInjectedDate=21/04/2022}
+Vaccine{name=Spikevax, code=4, quantity=500, expirationDae=22/06/2025, price=1.0, lastInjectedDate=30/12/2022}
+Vaccine{name=Vero-Cell, code=3, quantity=300, expirationDae=31/03/2024, price=1.0, lastInjectedDate=25/06/2021}
