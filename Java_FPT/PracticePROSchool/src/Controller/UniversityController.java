@@ -54,7 +54,6 @@ public class UniversityController extends Menu {
 								break;
 
 							}
-
 							case 3: {
 								try {
 									studentController.writeFile();

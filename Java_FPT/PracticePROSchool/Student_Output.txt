@@ -1,4 +1,3 @@
 Student{ID=QE123, firstName=Nguyen, lastName=Phuc, phoneNum=0231456, adress=HaiCang/QuyNhon}
 Student{ID=QE567, firstName=Ha, lastName=Hoang, phoneNum=0456213, adress=NhonBinh/QuyNhon}
 Student{ID=QE189, firstName=Nguyen, lastName=Khoa, phoneNum=0598741, adress=NgoMay/QuyNhon}
-Student{ID=QE111, firstName=con, lastName=cac, phoneNum=090909, adress=quy nhon}

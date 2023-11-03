@@ -72,5 +72,4 @@ public class Student implements Comparable<Student>{
 	public int compareTo(Student o) {
 		return lastName.compareTo(o.getLastName());
 	}
-	
 }

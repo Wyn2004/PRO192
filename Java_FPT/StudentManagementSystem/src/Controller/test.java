@@ -9,6 +9,5 @@ public class test {
 		String[] options = { "Add new student", "Search student", "Print all student", "Exit" };
 		Menu mainMenu = new StudentManagement("Student Magenement System", options);
 		mainMenu.execute();
-
 	}
 }
