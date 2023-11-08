@@ -87,7 +87,6 @@ public class Validator {
 		try {
 			date = formatDate.parse(dateString);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return date;

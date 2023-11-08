@@ -1,11 +1,9 @@
-package Module;
+package utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
-import javax.print.DocFlavor.INPUT_STREAM;
 
 public class Validator {
 
@@ -67,7 +65,7 @@ public class Validator {
 		System.out.print(notification);
 		while (true) {
 			String result = sc.nextLine().trim();
-			if (result == null || result.length() <= 10 || !result.matches("[0-9]+")) {
+			if (result == null || result.length() < 10 || !result.matches("[0-9]+")) {
 				System.err.print("Error: Invalid input, please try again: ");
 				continue;
 			}

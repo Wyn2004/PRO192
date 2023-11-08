@@ -1,0 +1,6 @@
+name=Trinh Quoc Thang, gender=male, birthDay=09/05/2004, adress=Quy Nhon, phoneNum=0585783693, ID=QE180123, average=9.6, email=thang@gmail.com, major=SE
+name=Le Hoang Trong, gender=male, birthDay=19/05/2004, adress=Gia Lai, phoneNum=033454561, ID=QE180185, average=9.9, email=trong@gmail.com, major=SE
+name=Nguyen Tan Thang, gender=male, birthDay=9/11/2004, adress=An Nhon, phoneNum=05854563693, ID=QE180019, average=9.1, email=thangtan@gmail.com, major=AI
+name=Cao Phuong Khanh Vy, gender=female, birthDay=19/012/2003, adress=An Nhon, phoneNum=09875664561, ID=QE180037, average=7.3, email=vy@gmail.com, major=SE
+name=Nguyen Minh Tam, gender=female, birthDay=29/10/2002, adress=Quang Ngai, phoneNum=05798863693, ID=QE180653, average=6.8, email=tam@gmail.com, major=AI
+name=Nguyen Vinh Phuc, gender=male, birthDay=17/12/2004, adress=Hoai Nhon, phoneNum=0576855764561, ID=QE180016, average=7.5, email=phuc@gmail.com, major=MD

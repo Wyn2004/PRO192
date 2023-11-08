@@ -1,22 +1,18 @@
 package module;
 
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
-import java.util.Scanner;
 
-import com.google.gson.annotations.Expose;
+import control.ListStudent;
+import utils.Validator;
 
-public class Student extends Person implements Serializable {
+public class Student extends Person {
 
-	@Expose
 	private String ID;
-	@Expose
 	private double average;
-	@Expose
 	private String email;
-	@Expose
 	private String major;
-	private transient Validator validator = new Validator();
 
 	public Student() {
 	}
@@ -25,7 +21,7 @@ public class Student extends Person implements Serializable {
 		this.ID = ID;
 	}
 
-	public Student(String name, String gender, Day birthDay, String adress, String phoneNum, String ID, double average,
+	public Student(String name, String gender, Date birthDay, String adress, String phoneNum, String ID, double average,
 			String email, String major) {
 		super(name, gender, birthDay, adress, phoneNum);
 		this.ID = ID;
@@ -38,25 +34,28 @@ public class Student extends Person implements Serializable {
 	public void inputInfo() {
 
 		super.inputInfo();
-		@SuppressWarnings("resource")
-		Scanner inputStudent = new Scanner(System.in);
+		String mess = "Enter student ID: ";
+		while (true) {
+			this.ID = Validator.inputString(mess).toUpperCase();
+			if (!ListStudent.checkID(this.ID)) {
+				break;
+			} else
+				mess = "Invalid input (this ID is exist), please enter again: ";
+		}
+		this.average = Validator.inputDouble("Enter average: ", 0, 10);
+		mess = "Enter student email: ";
+		while (true) {
+			this.email = Validator.inputEmail("Enter email: ");
+			if (!ListStudent.checkEmail(this.email)) {
+				break;
+			} else
+				mess = "Invalid input (this email is exist), please enter again: ";
+		}		this.major = Validator.inputString("Enter major: ").toUpperCase();
 
-		System.out.print("Enter student ID (8 character): ");
-		while (!setID(inputStudent.nextLine().trim()))
-			;
-		this.average = validator.inputDouble("Enter average point: ", 0, 10);
-		System.out.print("Enter email: ");
-		while (!setEmail(inputStudent.nextLine().trim()))
-			;
-		System.out.print("Enter major: ");
-		while (!setMajor(inputStudent.nextLine().trim()))
-			;
 		System.out.println();
 	}
 
-	@Override
 	public void showInfo() {
-		super.showInfo();
 		System.out.println(toStringStudent());
 	}
 
@@ -64,88 +63,53 @@ public class Student extends Person implements Serializable {
 		return ID;
 	}
 
-	public boolean setID(String ID) {
-		if (ID != null && ID.length() == 8) {
-			this.ID = ID.toUpperCase();
-			return true;
-		} else {
-			System.err.print("Error... Enter again Student ID (8 character): ");
-			return false;
-		}
+	public void setID(String iD) {
+		ID = iD;
 	}
 
 	public double getAverage() {
 		return average;
 	}
 
-	public boolean setAverage(double average) {
-		if (average >= 0 && average <= 10) {
-			this.average = average;
-			return true;
-		} else {
-			System.err.print("Error... Enter again average: ");
-			return false;
-		}
+	public void setAverage(double average) {
+		this.average = average;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public boolean setEmail(String email) {
-		if (email != null && email.contains("@") && !email.contains(" ")) {
-			this.email = email;
-			return true;
-		} else {
-			System.err.print("Error... Enter again email (contain '@'): ");
-			return false;
-		}
-
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getMajor() {
 		return major;
 	}
 
-	public boolean setMajor(String major) {
-		if (major != null && major.length() > 0) {
-			this.major = major.toUpperCase();
-			return true;
-		} else {
-			System.err.print("Error... Enter again major: ");
-			return false;
-		}
-
-	}
-
-	public boolean checkScholarship() {
-		if (this.getAverage() >= 8)
-			return true;
-		else
-			return false;
-	}
-
-	public String toStringStudent() {
-		return "Student [ID=" + ID + ", average=" + average + ", email=" + email + ", major=" + major + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(ID, average, email);
+	public void setMajor(String major) {
+		this.major = major;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
 		return Objects.equals(ID, other.ID)
 				&& Double.doubleToLongBits(average) == Double.doubleToLongBits(other.average)
-				&& Objects.equals(email, other.email);
+				&& Objects.equals(email, other.email) && Objects.equals(major, other.major);
+	}
+
+	public String toStringStudent() {
+		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+		return "Student [name=" + getName() + ", gender=" + getGender() + ", birthDay="
+				+ formatDate.format(getBirthDay()) + ", adress=" + getAdress() + ", phoneNum=" + getPhoneNum() + ", ID="
+				+ ID + ", average=" + average + ", email=" + email + ", major=" + major + "]";
 	}
 
 }

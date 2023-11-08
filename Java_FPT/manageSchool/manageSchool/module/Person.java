@@ -1,93 +1,59 @@
 package module;
 
-import java.io.Serializable;
-import java.util.Scanner;
+import java.util.Date;
+import java.util.Objects;
 
-import com.google.gson.annotations.Expose;
+public class Person {
 
-public class Person implements Serializable {
-
-	@Expose
 	private String name;
-	@Expose
 	private String gender;
-	@Expose
-	private Day birthDay = new Day();
-	@Expose
+	private Date birthDay;
 	private String adress;
-	@Expose
 	private String phoneNum;
 
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person(String name, String gender, Day birthDay, String adress,String phoneNum) {
+	public Person(String name, String gender, Date birthDay, String adress, String phoneNum) {
 		this.name = name;
 		this.gender = gender;
 		this.birthDay = birthDay;
 		this.adress = adress;
-		this.phoneNum= phoneNum;
+		this.phoneNum = phoneNum;
 	}
 
 	public void inputInfo() {
 
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
+		this.name = utils.Validator.inputString("Enter name: ");
+		this.gender = utils.Validator.inputString("Enter gender: ");
+		this.birthDay = utils.Validator.inputDate("Enter birthDay (dd/MM/yyyy): ");
+		this.adress = utils.Validator.inputString("Enter adress: ");
+		this.phoneNum = utils.Validator.inputPhoneNum("Enter phone number: ");
 
-		System.out.print("Enter name: ");
-		while (!setName(scanner.nextLine().trim()))
-			;
-		System.out.print("Enter gender: ");
-		while (!setGender(scanner.nextLine().trim()))
-			;
-		birthDay.inputBirth();
-		System.out.print("Enter adress: ");
-		while (!setAdress(scanner.nextLine().trim()))
-			;
-		System.out.print("Enter phone number: ");
-		while (!setPhoneNum(scanner.nextLine().trim()))
-			;
-
-	}
-
-	public void showInfo() {
-		System.out.print(toStringPerson());
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public boolean setName(String name) {
-		if (name != null && name.length() > 0) {
-			this.name = name;
-			return true;
-		} else {
-			System.err.print("Error... Invalid input please try again:");
-			return false;
-		}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getGender() {
 		return gender;
 	}
 
-	public boolean setGender(String gender) {
-		if (gender != null && gender.length() > 0) {
-			this.gender = gender.toUpperCase();
-			return true;
-		} else {
-			System.err.print("Error... Invalid input please try again:");
-			return false;
-		}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public Day getBirthDay() {
+	public Date getBirthDay() {
 		return birthDay;
 	}
 
-	public void setBirthDay(Day birthDay) {
+	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
 	}
 
@@ -95,34 +61,35 @@ public class Person implements Serializable {
 		return adress;
 	}
 
-	public boolean setAdress(String adress) {
-		if (adress != null && adress.length() > 0) {
-			this.adress = adress.toUpperCase();
-			return true;
-		} else {
-			System.err.print("Error... Invalid input please try again:");
-			return false;
-		}
+	public void setAdress(String adress) {
+		this.adress = adress;
 	}
 
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public boolean setPhoneNum(String phoneNum) {
-		if (phoneNum != null && phoneNum.length() >=10 && phoneNum.matches("[0-9]+")) {
-			this.phoneNum = phoneNum;
-			return true;
-		} else {
-			System.err.print("Error... Invalid input please try again:");
-			return false;
-		}	}
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
 
-	public String toStringPerson() {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		return Objects.equals(adress, other.adress) && Objects.equals(birthDay, other.birthDay)
+				&& Objects.equals(gender, other.gender) && Objects.equals(name, other.name)
+				&& Objects.equals(phoneNum, other.phoneNum);
+	}
+
+	@Override
+	public String toString() {
 		return "Person [name=" + name + ", gender=" + gender + ", birthDay=" + birthDay + ", adress=" + adress
 				+ ", phoneNum=" + phoneNum + "]";
 	}
-
-
-
 }
