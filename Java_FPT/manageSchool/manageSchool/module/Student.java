@@ -55,10 +55,6 @@ public class Student extends Person {
 		System.out.println();
 	}
 
-	public void showInfo() {
-		System.out.println(toStringStudent());
-	}
-
 	public String getID() {
 		return ID;
 	}
@@ -105,7 +101,8 @@ public class Student extends Person {
 				&& Objects.equals(email, other.email) && Objects.equals(major, other.major);
 	}
 
-	public String toStringStudent() {
+	@Override
+	public String toString() {
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 		return "Student [name=" + getName() + ", gender=" + getGender() + ", birthDay="
 				+ formatDate.format(getBirthDay()) + ", adress=" + getAdress() + ", phoneNum=" + getPhoneNum() + ", ID="

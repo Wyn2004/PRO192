@@ -5,14 +5,14 @@ import java.io.IOException;
 import utils.Validator;
 import view.Menu;
 
-public class MenuLector extends Menu {
+public class ManageLector extends Menu {
 
 	ListLector listLector;
 
-	public MenuLector() {
+	public ManageLector() {
 	}
 
-	public MenuLector(String notification, String[] opStrings, ListLector listLector) {
+	public ManageLector(String notification, String[] opStrings, ListLector listLector) {
 		super(notification, opStrings);
 		this.listLector = listLector;
 	}

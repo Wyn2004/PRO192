@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 import module.IFileInfor;
 import module.Lector;
 import utils.Validator;
+import view.LectorView;
 
 public class ListLector implements IFileInfor {
 
@@ -36,15 +37,7 @@ public class ListLector implements IFileInfor {
 
 	public void printListLector(List<Lector> list) {
 		if (!list.isEmpty()) {
-			System.out.println("List lectors: ");
-			System.out.println(
-					"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			for (Lector lector : list) {
-				lector.showInfo();
-			}
-			System.out.println(
-					"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			System.out.println("Total " + list.size() + " lectors in list.");
+			LectorView.displayLector(list);
 		} else
 			System.err.println("List lectors is empty!!!");
 		System.out.println();
@@ -117,13 +110,16 @@ public class ListLector implements IFileInfor {
 	}
 
 	public boolean edit(String id, String phoneNew) {
-		for (Lector lector : list) {
-			if (lector.getID().equals(id)) {
-				lector.setPhoneNum(phoneNew);
-				return true;
+		if (!list.isEmpty()) {
+			for (Lector lector : list) {
+				if (lector.getID().equals(id)) {
+					lector.setPhoneNum(phoneNew);
+					return true;
+				}
 			}
-		}
-		return false;
+			return false;
+		} else
+			return false;
 	}
 
 	public void sortByName() {
@@ -142,7 +138,7 @@ public class ListLector implements IFileInfor {
 	public void writeFile() throws IOException {
 		FileOutputStream fos = new FileOutputStream("Lectors_Output.txt");
 		for (Lector lector : list)
-			fos.write((lector.toStringLector() + "\n").getBytes());
+			fos.write((lector.toString() + "\n").getBytes());
 		System.out.println("Export data lector done!!!");
 		fos.close();
 	}

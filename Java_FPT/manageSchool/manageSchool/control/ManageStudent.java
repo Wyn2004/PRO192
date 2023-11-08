@@ -5,14 +5,14 @@ import java.io.IOException;
 import utils.Validator;
 import view.Menu;
 
-public class MenuStudents extends Menu {
+public class ManageStudent extends Menu {
 
 	private ListStudent listStudent;
 
-	public MenuStudents() {
+	public ManageStudent() {
 	}
 
-	public MenuStudents(String notification, String[] options, ListStudent listStudent) {
+	public ManageStudent(String notification, String[] options, ListStudent listStudent) {
 		super(notification, options);
 		this.listStudent = listStudent;
 	}

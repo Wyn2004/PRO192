@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 import module.IFileInfor;
 import module.Student;
 import utils.Validator;
+import view.StudentView;
 
 public class ListStudent implements IFileInfor {
 
@@ -36,15 +37,7 @@ public class ListStudent implements IFileInfor {
 
 	public void printListStudents(List<Student> list) {
 		if (!list.isEmpty()) {
-			System.out.println("List students: ");
-			System.out.println(
-					"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			for (Student student : list) {
-				student.showInfo();
-			}
-			System.out.println(
-					"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			System.out.println("Total " + list.size() + " students in list.");
+			StudentView.displayStudent(list);
 		} else
 			System.err.println("List student is empty!!!");
 		System.out.println();
@@ -116,24 +109,28 @@ public class ListStudent implements IFileInfor {
 	}
 
 	public void printScholarShip() {
-		int count = 0;
-		for (Student student : list) {
-			if (student.getAverage() >= 8) {
-				student.showInfo();
-				count++;
-			}
-		}
-		System.out.println("Have " + count + " student have scholarship.");
+		if (!list.isEmpty()) {
+			List<Student> scholarShip = new ArrayList<>();
+			for (Student student : list)
+				if (student.getAverage() >= 8)
+					scholarShip.add(student);
+			StudentView.displayStudentScholarship(scholarShip);
+		} else
+			System.err.println("List student is empty!!!");
+
 	}
 
 	public boolean edit(String id, String phoneNew) {
-		for (Student student : list) {
-			if (student.getID().equals(id)) {
-				student.setPhoneNum(phoneNew);
-				return true;
+		if (!list.isEmpty()) {
+			for (Student student : list) {
+				if (student.getID().equals(id)) {
+					student.setPhoneNum(phoneNew);
+					return true;
+				}
 			}
-		}
-		return false;
+			return false;
+		} else
+			return false;
 	}
 
 	public void sortByName() {
@@ -163,7 +160,7 @@ public class ListStudent implements IFileInfor {
 	public void writeFile() throws IOException {
 		FileOutputStream fos = new FileOutputStream("Students_Output.txt");
 		for (Student student : list)
-			fos.write((student.toStringStudent() + "\n").getBytes());
+			fos.write((student.toString() + "\n").getBytes());
 		System.out.println("Export data student done!!!");
 		fos.close();
 	}

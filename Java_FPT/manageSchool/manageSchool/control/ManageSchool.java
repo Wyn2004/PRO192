@@ -1,6 +1,7 @@
 package control;
 
 import view.Menu;
+import view.SchoolView;
 
 public class ManageSchool extends Menu {
 
@@ -33,7 +34,7 @@ public class ManageSchool extends Menu {
 						"Find Student by ID.", "Find student by name.", "Find by email.", "Find by major.",
 						"Print all students have scholarship.", "Sort list student by name.",
 						"Sort list student by average.", "Load data from file", "Save data to file", "Back." };
-				Menu menuStudents = new MenuStudents("Manage Student", studentOptions, listStudent);
+				Menu menuStudents = new ManageStudent("Manage Student", studentOptions, listStudent);
 				menuStudents.execute();
 				System.out.println();
 				break;
@@ -45,11 +46,16 @@ public class ManageSchool extends Menu {
 						"Save data to file", "Back." };
 				if (listLector == null)
 					listLector = new ListLector();
-				Menu menuLectors = new MenuLector("Manage Lector", lectorOptions, listLector);
+				Menu menuLectors = new ManageLector("Manage Lector", lectorOptions, listLector);
 				menuLectors.execute();
 				System.out.println();
 				break;
 
+			}
+			case 3: {
+				SchoolView.displaySchool(listStudent.getList(), listLector.getList());
+				System.out.println();
+				break;
 			}
 			}
 		} while (choice != 0);

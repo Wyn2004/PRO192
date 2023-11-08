@@ -89,11 +89,8 @@ public class Lector extends Person {
 				&& Objects.equals(subject, other.subject);
 	}
 
-	public void showInfo() {
-		System.out.println(toStringLector());
-	}
-
-	public String toStringLector() {
+	@Override
+	public String toString() {
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
 
 		return "Lector [name=" + getName() + ", gender=" + getGender() + ", birthDay="
